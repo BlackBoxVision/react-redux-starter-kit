@@ -1,7 +1,4 @@
 var webpack = require('webpack');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var ManifestPlugin = require('webpack-manifest-plugin');
-var ChunkManifestPlugin = require('chunk-manifest-webpack-plugin');
 
 module.exports = {
     entry: {
@@ -16,7 +13,7 @@ module.exports = {
 
     output: {
         path: __dirname + '/dist/',
-        filename: '[name].[chunkhash].js',
+        filename: 'app.js',
         publicPath: '/',
     },
 
@@ -53,14 +50,6 @@ module.exports = {
             name: 'vendor',
             minChunks: Infinity,
             filename: 'vendor.js',
-        }),
-        new ExtractTextPlugin('app.[chunkhash].css', { allChunks: true }),
-        new ManifestPlugin({
-            basePath: '/',
-        }),
-        new ChunkManifestPlugin({
-            filename: "chunk-manifest.json",
-            manifestVariable: "webpackManifest",
         }),
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.optimize.DedupePlugin(),

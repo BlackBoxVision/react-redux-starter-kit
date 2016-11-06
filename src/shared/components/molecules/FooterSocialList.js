@@ -7,11 +7,15 @@ class FooterSocialList extends Component {
     render() {
         const { links } = this.props;
 
-        return (
-            <FooterList>
-                {links.map(this.renderItem)}
-            </FooterList>
-        );
+        if (links) {
+            return (
+                <FooterList>
+                    {links.map(this.renderItem)}
+                </FooterList>
+            );
+        }
+
+        return <FooterList/>;
     }
 
     renderItem = (link, index) => (

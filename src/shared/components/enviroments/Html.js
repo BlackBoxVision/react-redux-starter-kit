@@ -1,9 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import HtmlBody from '../atoms/HtmlBody';
-import assetsManifest from '../../../../dist/manifest.json';
-import chunkManifest from '../../../../dist/chunk-manifest.json';
-
-const isProd = () => process.env.NODE_ENV === 'production';
 
 class Html extends Component {
     render() {
@@ -31,9 +27,8 @@ class Html extends Component {
                 <HtmlBody>
                     <div id='app' dangerouslySetInnerHTML={{__html: content}}/>
                     <script charSet='UTF-8' dangerouslySetInnerHTML={{__html: `window.__INITIAL_STATE__=${JSON.stringify(store.getState())};`}}/>
-                    <script charSet='UTF-8' dangerouslySetInnerHTML={{__html: `${isProd()? `<![CDATA[window.webpackManifest=${JSON.stringify(chunkManifest)};]]>` : ''};`}}/>
-                    <script charSet='UTF-8' src={`${isProd()? assetsManifest['/vendor.js'] : 'vendor.js'}`}/>
-                    <script charSet='UTF-8' src={`${isProd()? assetsManifest['/app.js'] : 'app.js'}`}/>
+                    <script charSet='UTF-8' src='vendor.js'/>
+                    <script charSet='UTF-8' src='app.js'/>
                 </HtmlBody>
             </html>
         )
@@ -43,9 +38,9 @@ class Html extends Component {
 Html.propTypes = {
     content: PropTypes.string.isRequired,
     store: PropTypes.object.isRequired,
-    styles: PropTypes.array.isRequired,
-    title: PropTypes.string.isRequired,
-    icon: PropTypes.string.isRequired
+    styles: PropTypes.string.isRequired,
+    title: PropTypes.string,
+    icon: PropTypes.string
 };
 
 export default Html;

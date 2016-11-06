@@ -2,17 +2,17 @@ import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import styleSheet from 'styled-components/lib/models/StyleSheet'
 import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
-import { match } from 'react-router';
+import match from 'react-router/lib/match';
 import configureStore from '../../shared/redux/store/configureStore';
+import Html from '../../shared/components/enviroments/Html';
 import routes from '../../shared/routes.js';
 import App from '../../shared/App';
-import Html from '../../shared/components/enviroments/Html';
 
 class Middlewares {
-    static handleRender(request, response, next) {
+    static handleRender({ url, headers }, response, next) {
         let store = configureStore();
 
-        match({ routes, location: request.url }, (error, redirectLocation, renderProps) => {
+        match({ routes, location: url }, (error, redirectLocation, renderProps) => {
             if (error)
                 return next(error);
 
@@ -20,7 +20,7 @@ class Middlewares {
                 return next();
 
             if (redirectLocation)
-                return response.redirect(302, redirectLocation.pathname + redirectLocation.search);
+                return response.redirect(302, `${redirectLocation.pathname}${redirectLocation.search}`);
 
             const content = ReactDOMServer.renderToString(
                 <App
@@ -30,7 +30,7 @@ class Middlewares {
                     theme={{
                         ...lightBaseTheme,
                         ...{
-                            userAgent: request.headers['user-agent']
+                            userAgent: headers['user-agent']
                         }
                     }}
                 />

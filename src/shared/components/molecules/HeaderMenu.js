@@ -6,11 +6,15 @@ class HeaderMenu extends Component {
     render() {
         const { links } = this.props;
 
-        return (
-            <HeaderContainer>
-                {links.map(this.renderItem)}
-            </HeaderContainer>
-        );
+        if (links) {
+            return (
+                <HeaderContainer>
+                    {links.map(this.renderItem)}
+                </HeaderContainer>
+            );
+        }
+
+        return <HeaderContainer/>;
     }
 
     renderItem = (link, index) => <HeaderMenuItem key={`header-menu-item-${index}`} {...link}/>;
