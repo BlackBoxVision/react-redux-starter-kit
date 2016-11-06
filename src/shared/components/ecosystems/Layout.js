@@ -1,14 +1,14 @@
 import React, { Component ,PropTypes } from 'react';
-import MainContainer from '../atoms/MainContainer';
+import Container from '../atoms/Layout/Container';
 
 class Main extends Component {
     render() {
         const { children } = this.props;
 
         return (
-            <MainContainer>
+            <Container>
                 {children}
-            </MainContainer>
+            </Container>
         )
     }
 }

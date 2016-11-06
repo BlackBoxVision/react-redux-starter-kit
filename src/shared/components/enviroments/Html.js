@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import HtmlBody from '../atoms/HtmlBody';
+import body from '../atoms/Html/Body';
 
 class Html extends Component {
     render() {
@@ -24,12 +24,12 @@ class Html extends Component {
 
                     <style dangerouslySetInnerHTML={{__html: styles}}/>
                 </head>
-                <HtmlBody>
+                <body>
                     <div id='app' dangerouslySetInnerHTML={{__html: content}}/>
                     <script charSet='UTF-8' dangerouslySetInnerHTML={{__html: `window.__INITIAL_STATE__=${JSON.stringify(store.getState())};`}}/>
                     <script charSet='UTF-8' src='vendor.js'/>
                     <script charSet='UTF-8' src='app.js'/>
-                </HtmlBody>
+                </body>
             </html>
         )
     }

@@ -13,42 +13,49 @@ class Middlewares {
         let store = configureStore();
 
         match({ routes, location: url }, (error, redirectLocation, renderProps) => {
-            if (error)
-                return next(error);
+            if (error) {
+                response.status(500);
+                response.send(error.message);
+                response.end();
+            }
 
-            if (!renderProps)
-                return next();
+            if (redirectLocation) {
+                response.redirect(302, redirectLocation.pathname + redirectLocation.search);
+            }
 
-            if (redirectLocation)
-                return response.redirect(302, `${redirectLocation.pathname}${redirectLocation.search}`);
+            if (renderProps) {
+                const content = ReactDOMServer.renderToString(
+                    <App
+                        store={store}
+                        renderProps={renderProps}
+                        renderOnServer={true}
+                        theme={{
+                            ...lightBaseTheme,
+                            ...{
+                                userAgent: headers['user-agent']
+                            }
+                        }}
+                    />
+                );
 
-            const content = ReactDOMServer.renderToString(
-                <App
-                    store={store}
-                    renderProps={renderProps}
-                    renderOnServer={true}
-                    theme={{
-                        ...lightBaseTheme,
-                        ...{
-                            userAgent: headers['user-agent']
-                        }
-                    }}
-                />
-            );
+                const styles = styleSheet.rules().map(rule => rule.cssText).join('\n');
+                const html = (
+                    <Html
+                        content={content}
+                        store={store}
+                        styles={styles}
+                    />
+                );
 
-            const styles = styleSheet.rules().map(rule => rule.cssText).join('\n');
-            const html = (
-                <Html
-                    content={content}
-                    store={store}
-                    styles={styles}
-                />
-            );
-
-            response.status(200);
-            response.header('Content-Type", "text/html; charset=utf-8');
-            response.send(`<!doctype html>\n${ReactDOMServer.renderToStaticMarkup(html)}`);
-            response.end();
+                response.status(200);
+                response.header('Content-Type", "text/html; charset=utf-8');
+                response.send(`<!doctype html>\n${ReactDOMServer.renderToStaticMarkup(html)}`);
+                response.end();
+            } else {
+                response.status(404);
+                response.send('Not found');
+                response.end();
+            }
         })
     }
 
