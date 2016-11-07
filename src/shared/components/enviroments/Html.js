@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
+import Container from '../atoms/Layout/Container';
 import Body from '../atoms/Html/Body';
 import Html from '../atoms/Html/Html';
-import Container from '../atoms/Html/Container';
 
 class IndexHtml extends Component {
     render() {

@@ -7,7 +7,7 @@ class ResetPassword extends Component {
             <div style={{ backgroundColor: '#FFF8E1' }}>
                 <Card containerStyle={{ margin: '200px' }}>
                     <CardText>
-                        <form>
+                        <form method="POST">
                             <div>
                                 <TextField floatingLabelText='Email' fullWidth/>
                             </div>

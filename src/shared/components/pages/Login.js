@@ -1,17 +1,17 @@
 import React, {Component, PropTypes} from 'react';
 import { Card, CardText, TextField, RaisedButton } from 'material-ui';
-import { browserHistory } from 'react-router';
+import { withRouter } from 'react-router';
 import LoginContainer from '../atoms/Login/LoginContainer';
 
 class Login extends Component {
-    handleSubmit = (event) => browserHistory.push('/dashboard');
+    handleSubmit = (event) => this.props.router.push('/dashboard');
 
     render() {
         return (
             <LoginContainer>
                 <Card>
                     <CardText>
-                        <form onSubmit={this.handleSubmit}>
+                        <form method="POST" onSubmit={this.handleSubmit}>
                             <div>
                                 <TextField floatingLabelText='Username' fullWidth/>
                             </div>
@@ -29,4 +29,4 @@ class Login extends Component {
     }
 }
 
-export default Login;
+export default withRouter(Login);
