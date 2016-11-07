@@ -1,12 +1,14 @@
 import React, { Component, PropTypes } from 'react';
-import body from '../atoms/Html/Body';
+import Body from '../atoms/Html/Body';
+import Html from '../atoms/Html/Html';
+import Container from '../atoms/Html/Container';
 
-class Html extends Component {
+class IndexHtml extends Component {
     render() {
         const { content, store, styles, title, icon } = this.props;
 
         return (
-            <html lang='en'>
+            <Html lang='en'>
                 <head>
                     <meta httpEquiv='Content-Type' content='text/html' charSet='utf-8'/>
                     <meta httpEquiv='X-UA-Compatible' content='IE=9; IE=8; IE=7; IE=EDGE'/>
@@ -24,18 +26,18 @@ class Html extends Component {
 
                     <style dangerouslySetInnerHTML={{__html: styles}}/>
                 </head>
-                <body>
-                    <div id='app' dangerouslySetInnerHTML={{__html: content}}/>
+                <Body>
+                    <Container id='app' dangerouslySetInnerHTML={{__html: content}}/>
                     <script charSet='UTF-8' dangerouslySetInnerHTML={{__html: `window.__INITIAL_STATE__=${JSON.stringify(store.getState())};`}}/>
                     <script charSet='UTF-8' src='vendor.js'/>
                     <script charSet='UTF-8' src='app.js'/>
-                </body>
-            </html>
+                </Body>
+            </Html>
         )
     }
 }
 
-Html.propTypes = {
+IndexHtml.propTypes = {
     content: PropTypes.string.isRequired,
     store: PropTypes.object.isRequired,
     styles: PropTypes.string.isRequired,
@@ -43,4 +45,4 @@ Html.propTypes = {
     icon: PropTypes.string
 };
 
-export default Html;
+export default IndexHtml;

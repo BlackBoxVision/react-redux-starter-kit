@@ -1,13 +1,17 @@
 import React, {Component, PropTypes} from 'react';
-import { Card, CardText, TextField, RaisedButton, Checkbox } from 'material-ui';
+import { Card, CardText, TextField, RaisedButton } from 'material-ui';
+import { browserHistory } from 'react-router';
+import LoginContainer from '../atoms/Login/LoginContainer';
 
 class Login extends Component {
+    handleSubmit = (event) => browserHistory.push('/dashboard');
+
     render() {
         return (
-            <div style={{ backgroundColor: '#FFF8E1' }}>
-                <Card containerStyle={{ margin: '200px' }}>
+            <LoginContainer>
+                <Card>
                     <CardText>
-                        <form>
+                        <form onSubmit={this.handleSubmit}>
                             <div>
                                 <TextField floatingLabelText='Username' fullWidth/>
                             </div>
@@ -15,12 +19,12 @@ class Login extends Component {
                                 <TextField floatingLabelText='Password' fullWidth/>
                             </div>
                             <div>
-                                <RaisedButton label='LOGIN' type='submit' primary/>
+                                <RaisedButton label='Login' type='submit' primary/>
                             </div>
                         </form>
                     </CardText>
                 </Card>
-            </div>
+            </LoginContainer>
         );
     }
 }
