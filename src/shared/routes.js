@@ -9,11 +9,12 @@ import NotFound from './components/pages/NotFound.js';
 import Register from './components/pages/Register.js';
 import ResetPassword from './components/pages/ResetPassword.js';
 
+//TODO JS handle dashboard and account as authenticated routes
 const routes = (
     <Route path='/' component={Layout}>
         <IndexRedirect to='login'/>
-        <Route path='login' component={Login}>
-            <Route path='dashboard' component={Dashboard}/>
+        <Route path='login' component={Login}/>
+        <Route path='dashboard' component={Dashboard}>
             <Route path='account' component={Account}/>
         </Route>
         <Route path='register' component={Register}/>
