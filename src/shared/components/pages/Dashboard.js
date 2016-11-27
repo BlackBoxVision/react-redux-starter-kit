@@ -12,7 +12,7 @@ class Dashboard extends Component {
 
     handleMenuTouch = (event) => this.setState({ open: !this.state.open });
 
-    handleMenuItemTouch = (event) => this.props.router.push('account');
+    handleMenuItemTouch = (event) => this.props.router.push('/dashboard/account');
 
     render() {
         const { children } = this.props;
