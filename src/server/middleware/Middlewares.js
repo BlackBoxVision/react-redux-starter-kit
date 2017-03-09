@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOMServer from 'react-dom/server';
 import styleSheet from 'styled-components/lib/models/StyleSheet'
 import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import match from 'react-router/lib/match';
@@ -7,6 +6,10 @@ import configureStore from '../../shared/redux/store/configureStore';
 import Html from '../../shared/components/enviroments/Html';
 import routes from '../../shared/routes.js';
 import App from '../../shared/App';
+
+import renderer from 'rapscallion/lib/renderer';
+
+const render = jsx => new renderer(jsx);
 
 class Middlewares {
     static handleRender({ url, headers }, response, next) {
@@ -24,7 +27,7 @@ class Middlewares {
             }
 
             if (renderProps) {
-                const content = ReactDOMServer.renderToString(
+                render(
                     <App
                         store={store}
                         renderProps={renderProps}
@@ -36,21 +39,24 @@ class Middlewares {
                             }
                         }}
                     />
-                );
+                )
+                .toPromise()
+                .then(html => {
+                    const styles = styleSheet.rules().map(rule => rule.cssText).join('\n');
 
-                const styles = styleSheet.rules().map(rule => rule.cssText).join('\n');
-                const html = (
-                    <Html
-                        content={content}
-                        store={store}
-                        styles={styles}
-                    />
-                );
+                    response.status(200);
+                    response.header('Content-Type", "text/html; charset=utf-8');
 
-                response.status(200);
-                response.header('Content-Type", "text/html; charset=utf-8');
-                response.send(`<!doctype html>\n${ReactDOMServer.renderToStaticMarkup(html)}`);
-                response.end();
+                    render(
+                        <Html
+                            content={html}
+                            store={store}
+                            styles={styles}
+                        />
+                    )
+                    .toStream()
+                    .pipe(response);
+                });
             } else {
                 response.status(404);
                 response.send('Not found');

@@ -10,24 +10,30 @@ import hashLinkScroll from './utils/hashLinkScroll';
 import configureStore from './redux/store/configureStore';
 
 class App extends Component {
+    static propTypes = {
+        renderOnServer: PropTypes.bool,
+        renderProps: PropTypes.object,
+        theme: PropTypes.object,
+        store: PropTypes.object,
+        history: PropTypes.object,
+        routes: PropTypes.object.isRequired
+    };
+
+    static defaultProps = {
+        renderOnServer: false,
+        theme: lightBaseTheme,
+        store: (typeof window !== 'undefined')? configureStore(window.__INITIAL_STATE__) : {},
+        history: browserHistory
+    }
+
     render() {
         const { renderOnServer, renderProps, routes, history, theme, store } = this.props;
         let router;
 
         if (renderOnServer) {
-            router = (
-                <RouterContext
-                    {...renderProps}
-                />
-            );
+            router = <RouterContext {...renderProps}/>;
         } else {
-            router = (
-                <Router
-                    history={history}
-                    routes={routes}
-                    onUpdate={hashLinkScroll}
-                />
-            );
+            router = <Router history={history} routes={routes} onUpdate={hashLinkScroll}/>;
         }
 
         return (
@@ -39,21 +45,5 @@ class App extends Component {
         )
     }
 }
-
-App.props = {
-    renderOnServer: PropTypes.bool,
-    renderProps: PropTypes.object,
-    theme: PropTypes.object,
-    store: PropTypes.object,
-    history: PropTypes.object,
-    routes: PropTypes.object.isRequired
-};
-
-App.defaultProps = {
-    renderOnServer: false,
-    theme: lightBaseTheme,
-    store: (typeof window !== 'undefined')? configureStore(window.__INITIAL_STATE__) : {},
-    history: browserHistory,
-};
 
 export default App;

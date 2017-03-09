@@ -19,38 +19,31 @@ module.exports = {
     },
 
     resolve: {
-        extensions: ['', '.js', '.jsx'],
         modules: [
-            'client',
-            'node_modules',
+            path.join(__dirname, "src"),
+            'node_modules'
         ]
     },
 
     module: {
-        loaders: [
+        rules: [
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                loader: 'babel-loader',
-                query: {
-                    presets: [
-                        'react',
-                        'es2015',
-                        'stage-0',
-                    ]
-                },
-                plugins: [
-                    [
-                        'babel-plugin-webpack-loaders', {
-                            'config': './webpack.config.babel.js',
-                            "verbose": false
-                        }
-                    ]
-                ]
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: [
+                            'react',
+                            'es2015',
+                            'stage-0',
+                        ]
+                    }
+                }
             },
             {
                 test: /\.json$/,
-                loader: 'json-loader',
+                use: 'json-loader',
             },
         ],
     },
@@ -60,10 +53,6 @@ module.exports = {
                 NODE_ENV: JSON.stringify('production'),
                 BABEL_DISABLE_CACHE: JSON.stringify(1)
             }
-        }),
-        new ExternalsPlugin({
-            type: 'commonjs',
-            include: path.resolve(__dirname, 'node_modules'),
-        }),
+        })
     ],
 };

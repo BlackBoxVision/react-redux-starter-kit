@@ -1,4 +1,5 @@
 var webpack = require('webpack');
+var path = require('path');
 
 module.exports = {
     entry: {
@@ -18,23 +19,22 @@ module.exports = {
     },
 
     resolve: {
-        extensions: ['', '.js', '.jsx'],
         modules: [
-            'client',
-            'node_modules',
-        ],
+            path.join(__dirname, "src"),
+            'node_modules'
+        ]
     },
 
     module: {
-        loaders: [
+        rules: [
             {
                 test: /\.jsx*$/,
                 exclude: /node_modules/,
-                loader: 'babel',
+                use: 'babel-loader',
             },
             {
                 test: /\.json$/,
-                loader: 'json-loader',
+                use: 'json-loader',
             }
         ],
     },
@@ -51,14 +51,15 @@ module.exports = {
             minChunks: Infinity,
             filename: 'vendor.js',
         }),
-        new webpack.optimize.OccurenceOrderPlugin(),
-        new webpack.optimize.DedupePlugin(),
         new webpack.optimize.UglifyJsPlugin({
             minimize: true,
             compressor: {
               warnings: false,
             }
         }),
-        new webpack.optimize.AggressiveMergingPlugin()
+        new webpack.optimize.AggressiveMergingPlugin(),
+        new webpack.LoaderOptionsPlugin({
+            minimize: true
+        })
     ],
 };
