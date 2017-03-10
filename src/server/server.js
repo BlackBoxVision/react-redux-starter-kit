@@ -1,4 +1,4 @@
-import Middleware from './middleware/Middlewares';
+import Middleware from './middleware/Middleware';
 import Config from './config';
 import Logger from './utils/Logger';
 import compression from 'compression';

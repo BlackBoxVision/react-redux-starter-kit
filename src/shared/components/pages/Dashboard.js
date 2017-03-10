@@ -16,29 +16,36 @@ class Dashboard extends Component {
 
     handleMenuTouch = event => this.setState({ open: !this.state.open });
 
-    handleMenuItemTouch = event => this.props.router.push('/dashboard/account');
+    handleMenuDrawer = open => this.setState({ open });
+
+    handleMenuItemTouch = event => {
+        this.props.router.push('/dashboard/account');
+        this.handleMenuTouch(event);
+    }
 
     render() {
-        const { children } = this.props;
-        const { open } = this.state;
-        const logoutButton = <FlatButton label='logout' onTouchTap={this.handleLogout}/>;
-
         return (
             <DashboardContainer>
                 <AppBar
                     onLeftIconButtonTouchTap={this.handleMenuTouch}
-                    iconElementRight={logoutButton}
+                    iconElementRight={
+                        <FlatButton label='logout' onTouchTap={this.handleLogout}/>
+                    }
                 />
                 <Drawer
-                    open={open}
-                    containerStyle={{ marginTop: '65px' }}
+                    open={this.state.open}
+                    docked={false}
+                    onRequestChange={this.handleMenuDrawer}
                 >
                     <List>
                         <ListItem primaryText='Account' onTouchTap={this.handleMenuItemTouch}/>
                     </List>
                 </Drawer>
-                <Card containerStyle={{ margin: '20px' }}>
-                    {children}
+                <Card
+                    style={{ margin: '10px', height: '100vh' }}
+                    containerStyle={{ padding: '20px', height: '100vh' }}
+                >
+                    {this.props.children}
                 </Card>
             </DashboardContainer>
         );

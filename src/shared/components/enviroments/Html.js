@@ -34,7 +34,7 @@ class IndexHtml extends Component {
 
                     <style dangerouslySetInnerHTML={{__html: styles}}/>
                 </head>
-                <Body style={{ margin: 0, padding: 0 }}>
+                <Body>
                     <Container id='app' dangerouslySetInnerHTML={{__html: content}}/>
                     <script charSet='UTF-8' dangerouslySetInnerHTML={{__html: `window.__INITIAL_STATE__=${JSON.stringify(store.getState())};`}}/>
                     <script charSet='UTF-8' src='vendor.js'/>
