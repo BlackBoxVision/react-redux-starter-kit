@@ -11,32 +11,29 @@ import configureStore from './redux/store/configureStore';
 
 class App extends Component {
     render() {
-        const { renderOnServer, renderProps, routes, history, theme, store } = this.props;
-        let router;
-
-        if (renderOnServer) {
-            router = (
-                <RouterContext
-                    {...renderProps}
-                />
-            );
-        } else {
-            router = (
-                <Router
-                    history={history}
-                    routes={routes}
-                    onUpdate={hashLinkScroll}
-                />
-            );
-        }
+        const { theme, store, ...routerProps  } = this.props;
 
         return (
             <MuiThemeProvider muiTheme={getMuiTheme(theme)}>
                 <Provider store={store}>
-                    {router}
+                    {this.getRouter({ ...routerProps, store })}
                 </Provider>
             </MuiThemeProvider>
         )
+    }
+
+    getRouter = ({ history, renderOnServer, renderProps, routes, store }) => {
+        if (renderOnServer) {
+            return <RouterContext {...renderProps}/>;
+        } else {
+            return (
+                <Router
+                    history={history}
+                    routes={routes(store)}
+                    onUpdate={hashLinkScroll}
+                />
+            );
+        }
     }
 }
 

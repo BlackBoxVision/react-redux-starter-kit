@@ -4,15 +4,19 @@ import { withRouter } from 'react-router';
 import DashboardContainer from '../atoms/Dashboard/DashboardContainer';
 
 class Dashboard extends Component {
+    static propTypes = {
+        children: PropTypes.array.isRequired
+    };
+
     state = {
         open: false
     };
 
-    handleLogout = (event) => this.props.router.push('/login');
+    handleLogout = event => this.props.router.push('/login');
 
-    handleMenuTouch = (event) => this.setState({ open: !this.state.open });
+    handleMenuTouch = event => this.setState({ open: !this.state.open });
 
-    handleMenuItemTouch = (event) => this.props.router.push('/dashboard/account');
+    handleMenuItemTouch = event => this.props.router.push('/dashboard/account');
 
     render() {
         const { children } = this.props;
@@ -34,16 +38,11 @@ class Dashboard extends Component {
                     </List>
                 </Drawer>
                 <Card containerStyle={{ margin: '20px' }}>
-                    <div>Hola!!!!</div>
                     {children}
                 </Card>
             </DashboardContainer>
         );
     }
 }
-
-Dashboard.props = {
-    children: PropTypes.array.isRequired
-};
 
 export default withRouter(Dashboard);

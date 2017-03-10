@@ -2,6 +2,10 @@ import React, { Component ,PropTypes } from 'react';
 import Container from '../atoms/Layout/Container';
 
 class Main extends Component {
+    static propTypes = {
+        children: PropTypes.array.isRequired
+    }
+
     render() {
         const { children } = this.props;
 
@@ -12,9 +16,5 @@ class Main extends Component {
         )
     }
 }
-
-Main.props = {
-    children: PropTypes.array.isRequired
-};
 
 export default Main;

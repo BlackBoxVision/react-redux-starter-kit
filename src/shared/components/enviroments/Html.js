@@ -4,6 +4,14 @@ import Body from '../atoms/Html/Body';
 import Html from '../atoms/Html/Html';
 
 class IndexHtml extends Component {
+    static propTypes = {
+        content: PropTypes.string.isRequired,
+        store: PropTypes.object.isRequired,
+        styles: PropTypes.string.isRequired,
+        title: PropTypes.string,
+        icon: PropTypes.string
+    }
+
     render() {
         const { content, store, styles, title, icon } = this.props;
 
@@ -26,7 +34,7 @@ class IndexHtml extends Component {
 
                     <style dangerouslySetInnerHTML={{__html: styles}}/>
                 </head>
-                <Body>
+                <Body style={{ margin: 0, padding: 0 }}>
                     <Container id='app' dangerouslySetInnerHTML={{__html: content}}/>
                     <script charSet='UTF-8' dangerouslySetInnerHTML={{__html: `window.__INITIAL_STATE__=${JSON.stringify(store.getState())};`}}/>
                     <script charSet='UTF-8' src='vendor.js'/>
@@ -36,13 +44,5 @@ class IndexHtml extends Component {
         )
     }
 }
-
-IndexHtml.propTypes = {
-    content: PropTypes.string.isRequired,
-    store: PropTypes.object.isRequired,
-    styles: PropTypes.string.isRequired,
-    title: PropTypes.string,
-    icon: PropTypes.string
-};
 
 export default IndexHtml;

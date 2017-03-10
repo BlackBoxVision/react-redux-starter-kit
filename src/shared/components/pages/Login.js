@@ -1,11 +1,15 @@
 import React, {Component, PropTypes} from 'react';
-import { Card, CardText, TextField, RaisedButton } from 'material-ui';
+import { Card, CardText, TextField, RaisedButton, FlatButton } from 'material-ui';
 import { withRouter } from 'react-router';
 import { Flex, Box } from 'reflexbox';
 import LoginContainer from '../atoms/Login/LoginContainer';
 
 class Login extends Component {
-    handleSubmit = (event) => this.props.router.push('/dashboard');
+    handleSubmit = event => this.props.router.push('/dashboard');
+
+    handleRegister = event => this.props.router.push('/register');
+
+    handlePasswordForget = event => this.props.router.push('/resetPassword');
 
     render() {
         return (
@@ -23,6 +27,8 @@ class Login extends Component {
                                         <TextField floatingLabelText='Password' fullWidth/>
                                     </div>
                                     <div>
+                                        <FlatButton label='Register' onClick={this.handleRegister} primary/>
+                                        <FlatButton label='Forgot password?' onClick={this.handlePasswordForget} primary/>
                                         <RaisedButton label='Login' type='submit' primary/>
                                     </div>
                                 </form>

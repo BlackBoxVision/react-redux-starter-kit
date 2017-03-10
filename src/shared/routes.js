@@ -10,10 +10,12 @@ import Register from './components/pages/Register.js';
 import ResetPassword from './components/pages/ResetPassword.js';
 
 //TODO JS handle dashboard and account as authenticated routes
-const routes = (
+const Routes = store => (
     <Route path='/' component={Layout}>
         <IndexRedirect to='login'/>
         <Route path='login' component={Login}/>
+        {/*<Route path='login' component={Login} onEnter={checkAuth(props.store)}/>*/}
+        {/*<Route path='dashboard' component={Dashboard} onEnter={checkAuth(props.store)}>*/}
         <Route path='dashboard' component={Dashboard}>
             <Route path='account' component={Account}/>
         </Route>
@@ -23,4 +25,4 @@ const routes = (
     </Route>
 );
 
-export default routes;
+export default Routes;
