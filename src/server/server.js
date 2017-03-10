@@ -1,4 +1,4 @@
-import Middlewares from './middleware/Middlewares';
+import Middleware from './middleware/Middlewares';
 import Config from './config';
 import Logger from './utils/Logger';
 import compression from 'compression';
@@ -13,12 +13,14 @@ class Server {
 
         app.use(helmet());
         app.use(compression({ level: 9, memLevel: 9 }));
-        app.use(bodyParser.json({ limit: '20mb'}));
+        app.use(bodyParser.json({ limit: '20mb' }));
         app.use(bodyParser.urlencoded({ limit: '20mb', extended: false }));
-        app.use(Express.static(path.resolve(__dirname, '../../dist'), { maxAge: 604800000 }));
 
-        app.use(Middlewares.handleRender);
-        app.use(Middlewares.handleErrors);
+        //TODO Add caching capabilities when finish
+        app.use(Express.static(path.resolve(__dirname, '../../dist')));
+
+        app.use(Middleware.handleRender);
+        app.use(Middleware.handleErrors);
 
         app.listen(Config.PORT, Config.IP_ADDRESS, (error) => {
             if (error) {

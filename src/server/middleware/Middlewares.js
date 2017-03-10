@@ -6,7 +6,7 @@ import routes from '../../shared/routes.js';
 import Response from '../utils/Response';
 import Render from '../utils/Render';
 
-class Middlewares {
+class Middleware {
     static async handleRender(request, response, next) {
         const store = configureStore();
 
@@ -39,4 +39,4 @@ class Middlewares {
     }
 }
 
-export default Middlewares;
+export default Middleware;
