@@ -14,14 +14,12 @@ import withResize from '../common/withResize';
 class ResetPassword extends React.Component {
 
     render() {
-        const background = Mobile.is() || this.props.width < 480 ? "white" : "#E0E0E0";
+        const styles = this.getStyles();
 
 	    return (
-            <ResetPasswordContainer backgroundColor={background}>
-                <FlexContainer>
-                    {this.getResetPasswordForm()}
-                </FlexContainer>
-            </ResetPasswordContainer>
+            <FlexContainer style={styles.container}>
+                {this.getResetPasswordForm()}
+            </FlexContainer>
         );
     }
 
@@ -36,6 +34,14 @@ class ResetPassword extends React.Component {
             )
         }
     }
+
+	getStyles = () => {
+		return {
+			container: {
+				backgroundColor: Mobile.is() || this.props.width < 480 ? "white" : "#E0E0E0"
+			}
+		};
+	}
 
 	handleLogin = event => this.props.router.push('/login');
 }

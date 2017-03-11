@@ -1,7 +1,6 @@
 import React, {PropTypes} from 'react';
 import withRouter from 'react-router/lib/withRouter';
 
-import RegisterContainer from '../common/Container';
 import FlexContainer from '../common/FlexContainer';
 import RegisterForm from './RegisterForm';
 import RegisterFormMobile from './RegisterFormMobile';
@@ -13,14 +12,12 @@ import withResize from '../common/withResize';
 class Register extends React.Component {
 
     render() {
-	    const background = Mobile.is() || this.props.width < 480 ? "white" : "#E0E0E0";
+	    const styles = this.getStyles();
 
 	    return (
-            <RegisterContainer backgroundColor={background}>
-                <FlexContainer>
-                    {this.getRegisterForm()}
-                </FlexContainer>
-            </RegisterContainer>
+            <FlexContainer style={styles.container}>
+                {this.getRegisterForm()}
+            </FlexContainer>
         );
     }
 
@@ -35,6 +32,14 @@ class Register extends React.Component {
             );
         }
     }
+
+	getStyles = () => {
+		return {
+			container: {
+				backgroundColor: Mobile.is() || this.props.width < 480 ? "white" : "#E0E0E0"
+			}
+		};
+	}
 
 	handleLogin = event => this.props.router.push('/login');
 }

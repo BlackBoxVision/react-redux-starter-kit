@@ -2,7 +2,6 @@ import React, {PropTypes} from 'react';
 import withRouter from 'react-router/lib/withRouter';
 
 import Mobile from '../../utils/Mobile';
-import LoginContainer from '../common/Container';
 import FlexContainer from '../common/FlexContainer';
 import LoginFormMobile from './LoginFormMobile';
 import LoginForm from './LoginForm';
@@ -13,14 +12,12 @@ import withResize from '../common/withResize';
 class Login extends React.Component {
 
     render() {
-    	const background = Mobile.is() || this.props.width < 480 ? "white" : "#E0E0E0";
+    	const styles = this.getStyles();
 
         return (
-            <LoginContainer backgroundColor={background}>
-                <FlexContainer>
-	                {this.getLoginForm()}
-                </FlexContainer>
-            </LoginContainer>
+	        <FlexContainer style={styles.container}>
+		        {this.getLoginForm()}
+	        </FlexContainer>
         );
     }
 
@@ -42,6 +39,14 @@ class Login extends React.Component {
                 />
 	        )
         }
+    }
+
+    getStyles = () => {
+    	return {
+    		container: {
+			    backgroundColor: Mobile.is() || this.props.width < 480 ? "white" : "#E0E0E0"
+		    }
+	    };
     }
 
 	handleSubmit = event => this.props.router.push('/dashboard');

@@ -3,8 +3,8 @@ import AppBar from 'material-ui/AppBar/AppBar';
 import Drawer from 'material-ui/Drawer/Drawer';
 import Card from 'material-ui/Card/Card';
 import FlatButton from 'material-ui/FlatButton/FlatButton';
-import Menu from 'material-ui/Menu/Menu';
-import MenuItem from 'material-ui/MenuItem/MenuItem';
+import List from 'material-ui/List/List';
+import ListItem from 'material-ui/List/ListItem';
 import withRouter from 'react-router/lib/withRouter';
 
 import Mobile from '../../utils/Mobile';
@@ -41,9 +41,9 @@ class Dashboard extends React.Component {
 							<span>Hello</span>
 		                </div>
 	                </div>
-                    <Menu>
-                        <MenuItem primaryText='Account' value='account' onTouchTap={this.handleMenuItemTouch}/>
-                    </Menu>
+                    <List>
+                        <ListItem primaryText='Account' value='account' onTouchTap={this.handleMenuItemTouch}/>
+                    </List>
                 </Drawer>
                 <Card style={styles.cardStyle} containerStyle={styles.cardContainerStyle}>
                     {this.props.children}
@@ -56,6 +56,7 @@ class Dashboard extends React.Component {
 	    return {
 	    	headerStyle: {
 			    height: '175px',
+			    width: 'auto',
 			    backgroundColor: "#673AB7"
 		    },
 		    headerTextStyle: {
