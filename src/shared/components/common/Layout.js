@@ -1,5 +1,5 @@
 import React, { Component ,PropTypes } from 'react';
-import Container from '../atoms/Layout/Container';
+import Container from './Container';
 
 class Layout extends Component {
     static propTypes = {

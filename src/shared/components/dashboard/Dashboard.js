@@ -7,8 +7,8 @@ import Menu from 'material-ui/Menu/Menu';
 import MenuItem from 'material-ui/MenuItem/MenuItem';
 import withRouter from 'react-router/lib/withRouter';
 
-import DashboardContainer from '../atoms/Layout/Container';
-
+import Mobile from '../../utils/Mobile';
+import DashboardContainer from '../common/Container';
 
 class Dashboard extends React.Component {
     static propTypes = {
@@ -20,6 +20,8 @@ class Dashboard extends React.Component {
     };
 
     render() {
+    	const styles = this.getStyles();
+
         return (
             <DashboardContainer backgroundColor="#FFAB91">
                 <AppBar
@@ -32,8 +34,8 @@ class Dashboard extends React.Component {
                     docked={false}
                     onRequestChange={this.handleMenuDrawer}
                 >
-	                <div style={{ height: '175px', backgroundColor: "#FFAB91" }}>
-		                <div style={{ padding: '20px' }}>
+	                <div style={styles.headerStyle}>
+		                <div style={styles.headerTextStyle}>
 							<span>Hello</span>
 		                </div>
 	                </div>
@@ -41,14 +43,31 @@ class Dashboard extends React.Component {
                         <MenuItem primaryText='Account' value='account' onTouchTap={this.handleMenuItemTouch}/>
                     </Menu>
                 </Drawer>
-                <Card
-                    style={{ margin: '20px', height: '100vh' }}
-                    containerStyle={{ padding: '20px', height: '100vh' }}
-                >
+                <Card style={styles.cardStyle} containerStyle={styles.cardContainerStyle}>
                     {this.props.children}
                 </Card>
             </DashboardContainer>
         );
+    }
+
+    getStyles = () => {
+	    return {
+	    	headerStyle: {
+			    height: '175px',
+			    backgroundColor: "#FFAB91"
+		    },
+		    headerTextStyle: {
+	    		padding: '20px'
+		    },
+		    cardStyle: {
+			    margin: Mobile.is() ? '0px' : '20px',
+			    height: '100vh'
+		    },
+		    cardContainerStyle: {
+			    padding: '20px',
+			    height: '100vh'
+		    }
+	    }
     }
 
 	handleLogout = event => this.props.router.push('/login');

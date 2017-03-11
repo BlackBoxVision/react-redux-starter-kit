@@ -35,7 +35,7 @@ class Middleware {
                 });
             }
         } catch (error) {
-            next(error);
+            console.info('This is the error -> ' + error);
         }
     }
 

@@ -1,28 +1,29 @@
 import React from 'react';
 import Route from 'react-router/lib/Route';
 import IndexRedirect from 'react-router/lib/IndexRedirect';
-import Account from './components/pages/Account.js';
-import Dashboard from './components/pages/Dashboard.js';
-import Login from './components/pages/Login.js';
-import Layout from './components/ecosystems/Layout.js';
-import NotFound from './components/pages/NotFound.js';
-import Register from './components/pages/Register.js';
-import ResetPassword from './components/pages/ResetPassword.js';
+import Account from './components/account/Account.js';
+import Dashboard from './components/dashboard/Dashboard.js';
+import Login from './components/login/Login.js';
+import Layout from './components/common/Layout.js';
+import NotFound from './components/notFound/NotFound.js';
+import Register from './components/register/Register.js';
+import ResetPassword from './components/resetPassword/ResetPassword.js';
 
-//TODO JS handle dashboard and account as authenticated routes
-const Routes = store => (
-    <Route path='/' component={Layout}>
-        <IndexRedirect to='login'/>
-        <Route path='login' component={Login}/>
-        {/*<Route path='login' component={Login} onEnter={checkAuth(props.store)}/>*/}
-        {/*<Route path='dashboard' component={Dashboard} onEnter={checkAuth(props.store)}>*/}
-        <Route path='dashboard' component={Dashboard}>
-            <Route path='account' component={Account}/>
+function getRoutes(store) {
+    return (
+        <Route path='/' component={Layout}>
+            <IndexRedirect to='login'/>
+            <Route path='login' component={Login}/>
+		    {/*<Route path='login' component={Login} onEnter={checkAuth(props.store)}/>*/}
+		    {/*<Route path='dashboard' component={Dashboard} onEnter={checkAuth(props.store)}>*/}
+            <Route path='dashboard' component={Dashboard}>
+                <Route path='account' component={Account}/>
+            </Route>
+            <Route path='register' component={Register}/>
+            <Route path='resetPassword' component={ResetPassword}/>
+            <Route path='*' component={NotFound}/>
         </Route>
-        <Route path='register' component={Register}/>
-        <Route path='resetPassword' component={ResetPassword}/>
-        <Route path='*' component={NotFound}/>
-    </Route>
-);
+    )
+}
 
-export default Routes;
+export default getRoutes;

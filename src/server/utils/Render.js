@@ -3,7 +3,7 @@ import ReactDOMServer from 'react-dom/server';
 import match from 'react-router/lib/match';
 import styleSheet from 'styled-components/lib/models/StyleSheet';
 
-import Html from '../../shared/components/enviroments/Html';
+import Html from '../../shared/components/common/IndexHtml';
 import App from '../../shared/App';
 
 export default class Render {
