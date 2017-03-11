@@ -5,10 +5,11 @@ import Router from 'react-router/lib/Router';
 import RouterContext from 'react-router/lib/RouterContext';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import Provider from 'react-redux/lib/components/Provider';
+
 import hashLinkScroll from './utils/hashLinkScroll';
 import configureStore from './redux/store/configureStore';
+import lightBaseTheme from './theme';
 
 injectTapEventPlugin();
 

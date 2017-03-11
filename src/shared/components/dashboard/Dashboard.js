@@ -23,7 +23,7 @@ class Dashboard extends React.Component {
     	const styles = this.getStyles();
 
         return (
-            <DashboardContainer backgroundColor="#FFAB91">
+            <DashboardContainer backgroundColor="#E0E0E0">
                 <AppBar
 	                title='My Awesome App'
                     onLeftIconButtonTouchTap={this.handleMenuTouch}
@@ -54,7 +54,7 @@ class Dashboard extends React.Component {
 	    return {
 	    	headerStyle: {
 			    height: '175px',
-			    backgroundColor: "#FFAB91"
+			    backgroundColor: "#673AB7"
 		    },
 		    headerTextStyle: {
 	    		padding: '20px'

@@ -17,15 +17,11 @@ class LoginForm extends React.Component {
 		const { handleSubmit, handleRegister, handlePasswordForget } = this.props;
 
 		return (
-			<Card containerStyle={{ height: "75%" }}>
+			<Card>
 				<CardText>
 					<form method="POST" onSubmit={handleSubmit}>
-						<div>
-							<TextField floatingLabelText='Username' fullWidth/>
-						</div>
-						<div>
-							<TextField floatingLabelText='Password' fullWidth/>
-						</div>
+						<TextField floatingLabelText='Username' hintText='Username' fullWidth/>
+						<TextField floatingLabelText='Password' hintText='Password' fullWidth/>
 						<div>
 							<FlatButton label='Register' onClick={handleRegister} primary/>
 							<FlatButton label='Forgot password?' onClick={handlePasswordForget} primary/>

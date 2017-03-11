@@ -6,6 +6,7 @@ import styleSheet from 'styled-components/lib/models/StyleSheet';
 import Html from '../../shared/components/common/IndexHtml';
 import App from '../../shared/App';
 
+
 export default class Render {
     static match(routes, location) {
         return new Promise((resolve, reject) => {

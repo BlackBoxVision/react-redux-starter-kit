@@ -13,15 +13,11 @@ class RegisterForm extends React.Component {
 
 	render() {
 		return (
-			<Card containerStyle={{ height: "75%" }}>
+			<Card>
 				<CardText>
 					<form method="POST">
-						<div>
-							<TextField floatingLabelText='Username' fullWidth/>
-						</div>
-						<div>
-							<TextField floatingLabelText='Password' fullWidth/>
-						</div>
+						<TextField floatingLabelText='Username' hintText='Username' fullWidth/>
+						<TextField floatingLabelText='Password' hintText='Password' fullWidth/>
 						<div>
 							<FlatButton label='Login' onClick={this.props.handleLogin} primary/>
 							<RaisedButton label='Register' type='submit' primary/>

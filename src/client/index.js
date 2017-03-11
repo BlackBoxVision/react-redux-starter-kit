@@ -3,7 +3,7 @@ import 'js-polyfills/web';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import theme from 'material-ui/styles/baseThemes/lightBaseTheme';
+import theme from '../shared/theme';
 
 import getRoutes from '../shared/routes.js';
 import App from '../shared/App';

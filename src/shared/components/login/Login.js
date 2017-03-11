@@ -12,7 +12,7 @@ class Login extends React.Component {
 
     render() {
         return (
-            <LoginContainer backgroundColor="#FFAB91">
+            <LoginContainer backgroundColor={!Mobile.is() ? "#E0E0E0" : "white"}>
                 <FlexContainer>
 	                {this.getLoginForm()}
                 </FlexContainer>

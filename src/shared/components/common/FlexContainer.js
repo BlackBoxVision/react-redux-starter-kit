@@ -8,13 +8,15 @@ const FlexContainer = ({ style = {}, children }) => (
 		minHeight: '100vh',
 		alignItems: 'center',
 		justifyContent: 'center',
+		width: '100%'
 	}}>
 		{children}
 	</div>
 );
 
 FlexContainer.propTypes = {
-	style: PropTypes.object
+	style: PropTypes.object,
+	children: PropTypes.any
 }
 
 export default FlexContainer;

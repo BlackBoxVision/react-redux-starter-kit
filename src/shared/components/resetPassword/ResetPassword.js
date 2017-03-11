@@ -14,7 +14,7 @@ class ResetPassword extends React.Component {
 
     render() {
         return (
-            <ResetPasswordContainer backgroundColor="#FFAB91">
+            <ResetPasswordContainer backgroundColor={!Mobile.is() ? "#E0E0E0" : "white"}>
                 <FlexContainer>
                     {this.getResetPasswordForm()}
                 </FlexContainer>

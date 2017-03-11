@@ -12,9 +12,7 @@ class RegisterFormMobile extends React.Component {
 	render() {
 		return (
 			<form method="POST">
-				<div>
-					<TextField floatingLabelText='Email' fullWidth/>
-				</div>
+				<TextField floatingLabelText='Email' hintText='Email' fullWidth/>
 				<div>
 					<FlatButton label='Login' onClick={this.props.handleLogin} primary/>
 					<RaisedButton label='Recover Password' type='submit' primary/>

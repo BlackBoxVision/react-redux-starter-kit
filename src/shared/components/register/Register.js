@@ -12,7 +12,7 @@ class Register extends React.Component {
 
     render() {
         return (
-            <RegisterContainer backgroundColor="#FFAB91">
+            <RegisterContainer backgroundColor={!Mobile.is() ? "#E0E0E0" : "white"}>
                 <FlexContainer>
                     {this.getRegisterForm()}
                 </FlexContainer>

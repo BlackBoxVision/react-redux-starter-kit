@@ -1,8 +1,8 @@
 import React from 'react';
-import theme from 'material-ui/styles/baseThemes/lightBaseTheme';
 
 import configureStore from '../../shared/redux/store/configureStore';
-import getRoutes from '../../shared/routes.js';
+import getRoutes from '../../shared/routes';
+import theme from '../../shared/theme';
 import Response from '../utils/Response';
 import Render from '../utils/Render';
 
