@@ -8,11 +8,15 @@ import RegisterFormMobile from './RegisterFormMobile';
 
 import Mobile from '../../utils/Mobile';
 
+import withResize from '../common/withResize';
+
 class Register extends React.Component {
 
     render() {
-        return (
-            <RegisterContainer backgroundColor={!Mobile.is() ? "#E0E0E0" : "white"}>
+	    const background = Mobile.is() || this.props.width < 480 ? "white" : "#E0E0E0";
+
+	    return (
+            <RegisterContainer backgroundColor={background}>
                 <FlexContainer>
                     {this.getRegisterForm()}
                 </FlexContainer>
@@ -21,7 +25,7 @@ class Register extends React.Component {
     }
 
     getRegisterForm = () => {
-        if (Mobile.is()) {
+        if (Mobile.is() || this.props.width < 480) {
             return (
                 <RegisterFormMobile handleLogin={this.handleLogin}/>
             );
@@ -35,4 +39,4 @@ class Register extends React.Component {
 	handleLogin = event => this.props.router.push('/login');
 }
 
-export default withRouter(Register);
+export default withRouter(withResize(Register));

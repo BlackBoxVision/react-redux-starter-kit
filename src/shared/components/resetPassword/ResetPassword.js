@@ -8,13 +8,16 @@ import ResetPasswordForm from './ResetPasswordForm';
 import ResetPasswordFormMobile from './ResetPasswordFormMobile';
 
 import Mobile from '../../utils/Mobile';
+import withResize from '../common/withResize';
 
 
 class ResetPassword extends React.Component {
 
     render() {
-        return (
-            <ResetPasswordContainer backgroundColor={!Mobile.is() ? "#E0E0E0" : "white"}>
+        const background = Mobile.is() || this.props.width < 480 ? "white" : "#E0E0E0";
+
+	    return (
+            <ResetPasswordContainer backgroundColor={background}>
                 <FlexContainer>
                     {this.getResetPasswordForm()}
                 </FlexContainer>
@@ -23,7 +26,7 @@ class ResetPassword extends React.Component {
     }
 
     getResetPasswordForm = () => {
-        if (Mobile.is()) {
+        if (Mobile.is() || this.props.width < 480) {
             return (
                 <ResetPasswordFormMobile handleLogin={this.handleLogin}/>
             )
@@ -37,4 +40,4 @@ class ResetPassword extends React.Component {
 	handleLogin = event => this.props.router.push('/login');
 }
 
-export default withRouter(ResetPassword);
+export default withRouter(withResize(ResetPassword));

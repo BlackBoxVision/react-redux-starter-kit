@@ -9,6 +9,8 @@ import withRouter from 'react-router/lib/withRouter';
 
 import Mobile from '../../utils/Mobile';
 import DashboardContainer from '../common/Container';
+import withResize from '../common/withResize';
+
 
 class Dashboard extends React.Component {
     static propTypes = {
@@ -60,7 +62,7 @@ class Dashboard extends React.Component {
 	    		padding: '20px'
 		    },
 		    cardStyle: {
-			    margin: Mobile.is() ? '0px' : '20px',
+			    margin: Mobile.is() || this.props.width < 480 ? '0px' : '20px',
 			    height: '100vh'
 		    },
 		    cardContainerStyle: {
@@ -82,4 +84,4 @@ class Dashboard extends React.Component {
 	}
 }
 
-export default withRouter(Dashboard);
+export default withRouter(withResize(Dashboard));
