@@ -16,7 +16,7 @@ class App extends Component {
         theme: PropTypes.object,
         store: PropTypes.object,
         history: PropTypes.object,
-        routes: PropTypes.func.isRequired
+        getRoutes: PropTypes.func.isRequired
     };
 
     static defaultProps = {
@@ -38,14 +38,14 @@ class App extends Component {
         )
     }
 
-    getRouter = ({ history, renderOnServer, renderProps, routes, store }) => {
+    getRouter = ({ history, renderOnServer, renderProps, getRoutes, store }) => {
         if (renderOnServer) {
             return <RouterContext {...renderProps}/>;
         } else {
             return (
                 <Router
                     history={history}
-                    routes={routes(store)}
+                    routes={getRoutes(store)}
                     onUpdate={hashLinkScroll}
                 />
             );

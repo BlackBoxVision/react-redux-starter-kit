@@ -1,9 +1,7 @@
 export default class Response  {
     static send(response, { headers, status, data }) {
-        if (headers && typeof headers === 'string') {
-            response.header(headers);
-        } else if (headers && typeof headers === 'array') {
-            headers.forEach(header => response.header(header));
+        if (headers && typeof headers === 'object') {
+            Object.keys(headers).forEach(key => response.append(key, headers[key]));
         }
 
         if (status && typeof status === 'number') {
