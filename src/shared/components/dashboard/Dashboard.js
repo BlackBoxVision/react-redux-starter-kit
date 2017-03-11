@@ -18,7 +18,7 @@ class Dashboard extends React.Component {
     };
 
     state = {
-        open: false
+        open: Mobile.is() || this.props.width < 480 ? false : true
     };
 
     render() {
@@ -33,14 +33,11 @@ class Dashboard extends React.Component {
                 />
                 <Drawer
                     open={this.state.open}
-                    docked={false}
-                    onRequestChange={this.handleMenuDrawer}
+	                containerStyle={styles.drawerStyle}
+	                onRequestChange={this.handleMenuDrawer}
+                    docked={Mobile.is() || this.props.width < 480 ? false : true}
                 >
-	                <div style={styles.headerStyle}>
-		                <div style={styles.headerTextStyle}>
-							<span>Hello</span>
-		                </div>
-	                </div>
+	                {this.shouldRenderDrawerHeader()}
                     <List>
                         <ListItem primaryText='Account' value='account' onTouchTap={this.handleMenuItemTouch}/>
                     </List>
@@ -52,22 +49,46 @@ class Dashboard extends React.Component {
         );
     }
 
+    shouldRenderDrawerHeader = () => {
+    	if (Mobile.is() || this.props.width < 480 ) {
+    		const styles = this.getStyles();
+
+    		return (
+			    <div style={styles.headerStyle}>
+				    <div style={styles.headerTextStyle}>
+					    <span>Hello</span>
+				    </div>
+			    </div>
+		    )
+	    }
+
+	    return false;
+    }
+
     getStyles = () => {
-	    return {
+    	return {
 	    	headerStyle: {
 			    height: '175px',
 			    width: 'auto',
 			    backgroundColor: "#673AB7"
 		    },
 		    headerTextStyle: {
-	    		padding: '20px'
+	    		padding: '20px',
+			    color: 'white'
 		    },
 		    cardStyle: {
-			    margin: Mobile.is() || this.props.width < 480 ? '0px' : '20px',
+			    marginTop: Mobile.is() || this.props.width < 480 ? '0px' : '20px',
+			    marginBottom: Mobile.is() || this.props.width < 480 ? '0px' : '20px',
+			    marginRight: Mobile.is() || this.props.width < 480 ? '0px' : '20px',
+			    marginLeft:  Mobile.is() || this.props.width < 480 ? '0' : this.state.open && this.props.width > 992 ? '280px' : '20px',
+	    //TODO review these prop
 			    height: Mobile.is() || this.props.width < 480 ? '91%' : '86%'
 		    },
 		    cardContainerStyle: {
-			    padding: '20px'
+			    padding: '20px',
+			},
+		    drawerStyle: {
+	    		marginTop: Mobile.is() || this.props.width < 480 ? '0px' : '64px'
 		    }
 	    }
     }
@@ -80,7 +101,10 @@ class Dashboard extends React.Component {
 
 	handleMenuItemTouch = event => {
 		this.props.router.push('/dashboard/account');
-		this.handleMenuTouch(event);
+
+		if (Mobile.is() || this.props.width < 480) {
+			this.handleMenuTouch(event);
+		}
 	}
 }
 
