@@ -1,6 +1,7 @@
-import React, {Component, PropTypes} from 'react';
+import React, {PropTypes} from 'react';
 
-class Account extends Component {
+
+class Account extends React.Component {
     render() {
         return <div>This is account</div>;
     }

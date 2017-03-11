@@ -1,6 +1,7 @@
-import React, {Component, PropTypes} from 'react';
+import React, {PropTypes} from 'react';
 
-class NotFound extends Component {
+
+class NotFound extends React.Component {
     render() {
         return <div>Ups, seems you try to enter a route that doesn't exists</div>;
     }

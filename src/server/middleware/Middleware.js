@@ -14,7 +14,10 @@ class Middleware {
             const { redirectLocation, renderProps } = await Render.match(getRoutes(store), request.url);
 
             if (redirectLocation) {
-                response.redirect(302, redirectLocation.pathname + redirectLocation.search);
+                Response.send(response, {
+                    status: 302,
+                    redirect: redirectLocation.pathname + redirectLocation.search
+                });
             }
 
             if (renderProps) {

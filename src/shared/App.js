@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, {PropTypes} from 'react';
+import injectTapEventPlugin from 'react-tap-event-plugin';
 import browserHistory from 'react-router/lib/browserHistory';
 import Router from 'react-router/lib/Router';
 import RouterContext from 'react-router/lib/RouterContext';
@@ -9,14 +10,17 @@ import Provider from 'react-redux/lib/components/Provider';
 import hashLinkScroll from './utils/hashLinkScroll';
 import configureStore from './redux/store/configureStore';
 
-class App extends Component {
+injectTapEventPlugin();
+
+
+class App extends React.Component {
     static propTypes = {
         renderOnServer: PropTypes.bool,
         renderProps: PropTypes.object,
         theme: PropTypes.object,
         store: PropTypes.object,
         history: PropTypes.object,
-        getRoutes: PropTypes.func.isRequired
+        getRoutes: PropTypes.func
     };
 
     static defaultProps = {

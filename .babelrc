@@ -12,15 +12,7 @@
     "env": {
         "production": {
             "presets": [
-                "es2015",
-                "react",
-                "react-optimize",
-                "stage-0"
-            ],
-            "plugins": [
-                "transform-decorators-legacy",
-                "transform-object-rest-spread",
-                "transform-react-remove-prop-types"
+                "react-optimize"
             ]
         }
     }

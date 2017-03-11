@@ -1,20 +1,18 @@
 import React, { Component ,PropTypes } from 'react';
 import Container from '../atoms/Layout/Container';
 
-class Main extends Component {
+class Layout extends Component {
     static propTypes = {
-        children: PropTypes.array.isRequired
+        children: PropTypes.any.isRequired
     }
 
     render() {
-        const { children } = this.props;
-
         return (
             <Container>
-                {children}
+                {this.props.children}
             </Container>
         )
     }
 }
 
-export default Main;
+export default Layout;

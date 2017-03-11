@@ -1,18 +1,24 @@
-import React, {Component, PropTypes} from 'react';
-import { withRouter } from 'react-router';
-import { Card, CardText, TextField, RaisedButton, FlatButton } from 'material-ui';
-import { Flex, Box } from 'reflexbox';
-import RegisterContainer from '../atoms/Login/LoginContainer';
+import React, {PropTypes} from 'react';
+import withRouter from 'react-router/lib/withRouter';
+import Card from 'material-ui/Card/Card';
+import CardText from 'material-ui/Card/CardText';
+import TextField from 'material-ui/TextField/TextField';
+import RaisedButton from 'material-ui/RaisedButton/RaisedButton';
+import FlatButton from 'material-ui/FlatButton/FlatButton';
+import Flex from 'reflexbox/dist/Flex';
+import Box from 'reflexbox/dist/Box';
 
-class Register extends Component {
-    handleLogin = event => this.props.router.push('/login');
+import RegisterContainer from '../atoms/Layout/Container';
+
+
+class Register extends React.Component {
 
     render() {
         return (
             <RegisterContainer>
                 <Flex align="center" justify="center" wrap>
-                    <Box sm={0} md={4} lg={4}/>
-                    <Box sm={12} md={4} lg={4} mt={6}>
+                    <Box sm={1} md={4} lg={4}/>
+                    <Box sm={10} md={4} lg={4} mt={6}>
                         <Card containerStyle={{ height: "75%" }}>
                             <CardText>
                                 <form method="POST">
@@ -30,11 +36,13 @@ class Register extends Component {
                             </CardText>
                         </Card>
                     </Box>
-                    <Box sm={0} md={4} lg={4}/>
+                    <Box sm={1} md={4} lg={4}/>
                 </Flex>
             </RegisterContainer>
         );
     }
+
+	handleLogin = event => this.props.router.push('/login');
 }
 
 export default withRouter(Register);

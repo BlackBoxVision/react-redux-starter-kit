@@ -1,7 +1,7 @@
-var fs = require('fs');
-var path = require('path');
-var ExternalsPlugin = require('webpack-externals-plugin');
-var webpack = require('webpack');
+const fs = require('fs');
+const path = require('path');
+const ExternalsPlugin = require('webpack-externals-plugin');
+const webpack = require('webpack');
 
 module.exports = {
     entry: path.resolve(__dirname, 'src/server/server.js'),

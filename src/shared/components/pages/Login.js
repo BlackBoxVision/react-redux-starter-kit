@@ -1,22 +1,24 @@
-import React, {Component, PropTypes} from 'react';
-import { Card, CardText, TextField, RaisedButton, FlatButton } from 'material-ui';
-import { withRouter } from 'react-router';
-import { Flex, Box } from 'reflexbox';
-import LoginContainer from '../atoms/Login/LoginContainer';
+import React, {PropTypes} from 'react';
+import Card from 'material-ui/Card/Card';
+import CardText from 'material-ui/Card/CardText';
+import TextField from 'material-ui/TextField/TextField';
+import RaisedButton from 'material-ui/RaisedButton/RaisedButton';
+import FlatButton from 'material-ui/FlatButton/FlatButton';
+import withRouter from 'react-router/lib/withRouter';
+import Flex from 'reflexbox/dist/Flex';
+import Box from 'reflexbox/dist/Box';
 
-class Login extends Component {
-    handleSubmit = event => this.props.router.push('/dashboard');
+import LoginContainer from '../atoms/Layout/Container';
 
-    handleRegister = event => this.props.router.push('/register');
 
-    handlePasswordForget = event => this.props.router.push('/resetPassword');
+class Login extends React.Component {
 
     render() {
         return (
-            <LoginContainer>
+            <LoginContainer backgroundColor="#FFAB91">
                 <Flex align="center" justify="center" wrap>
-                    <Box sm={0} md={4} lg={4}/>
-                    <Box sm={12} md={4} lg={4} mt={6}>
+                    <Box sm={1} md={4} lg={4}/>
+                    <Box sm={10} md={4} lg={4} mt={6}>
                         <Card containerStyle={{ height: "75%" }}>
                             <CardText>
                                 <form method="POST" onSubmit={this.handleSubmit}>
@@ -35,11 +37,17 @@ class Login extends Component {
                             </CardText>
                         </Card>
                     </Box>
-                    <Box sm={0} md={4} lg={4}/>
+                    <Box sm={1} md={4} lg={4}/>
                 </Flex>
             </LoginContainer>
         );
     }
+
+	handleSubmit = event => this.props.router.push('/dashboard');
+
+	handleRegister = event => this.props.router.push('/register');
+
+	handlePasswordForget = event => this.props.router.push('/resetPassword');
 }
 
 export default withRouter(Login);
