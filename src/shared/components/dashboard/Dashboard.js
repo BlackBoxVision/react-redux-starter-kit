@@ -63,11 +63,10 @@ class Dashboard extends React.Component {
 		    },
 		    cardStyle: {
 			    margin: Mobile.is() || this.props.width < 480 ? '0px' : '20px',
-			    height: '100vh'
+			    height: Mobile.is() || this.props.width < 480 ? '91%' : '86%'
 		    },
 		    cardContainerStyle: {
-			    padding: '20px',
-			    height: '100vh'
+			    padding: '20px'
 		    }
 	    }
     }
