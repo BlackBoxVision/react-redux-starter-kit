@@ -22,7 +22,7 @@ class Server {
         app.use(Middleware.handleRender);
         app.use(Middleware.handleErrors);
 
-        app.listen(Config.PORT, Config.IP_ADDRESS, (error) => {
+        app.listen(Config.PORT, Config.IP_ADDRESS, error => {
             if (error) {
                 Logger.error(`An error happen -> ${error}`);
             }

@@ -3,6 +3,8 @@ import TextField from 'material-ui/TextField/TextField';
 import RaisedButton from 'material-ui/RaisedButton/RaisedButton';
 import FlatButton from 'material-ui/FlatButton/FlatButton';
 
+import Form from '../common/Form';
+
 
 class LoginFormMobile extends React.Component {
 	static propTypes = {
@@ -15,7 +17,7 @@ class LoginFormMobile extends React.Component {
 		const { handleSubmit, handleRegister, handlePasswordForget } = this.props;
 
 		return (
-			<form method="POST" onSubmit={handleSubmit}>
+			<Form width="95%" method="POST" onSubmit={handleSubmit}>
 				<TextField floatingLabelText='Username' hintText='Username' fullWidth/>
 				<TextField floatingLabelText='Password' hintText='Password' fullWidth/>
 				<div>
@@ -23,7 +25,7 @@ class LoginFormMobile extends React.Component {
 					<FlatButton label='Forgot password?' onClick={handlePasswordForget} primary/>
 					<RaisedButton label='Login' type='submit' primary/>
 				</div>
-			</form>
+			</Form>
 		);
 	}
 }

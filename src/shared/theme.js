@@ -10,7 +10,7 @@ export default {
 	fontFamily: 'Roboto, sans-serif',
 	palette: {
 		primary1Color: deepPurple500,
-		primary2Color: deepPurple500,
+		primary2Color: deepPurple700,
 		primary3Color: grey400,
 		accent1Color: indigoA200,
 		accent2Color: grey100,

@@ -5,6 +5,8 @@ import TextField from 'material-ui/TextField/TextField';
 import RaisedButton from 'material-ui/RaisedButton/RaisedButton';
 import FlatButton from 'material-ui/FlatButton/FlatButton';
 
+import Form from '../common/Form';
+
 
 class LoginForm extends React.Component {
 	static propTypes = {
@@ -15,11 +17,12 @@ class LoginForm extends React.Component {
 
 	render() {
 		const { handleSubmit, handleRegister, handlePasswordForget } = this.props;
+		const styles = this.getStyles();
 
 		return (
 			<Card>
 				<CardText>
-					<form method="POST" onSubmit={handleSubmit}>
+					<Form method="POST" onSubmit={handleSubmit}>
 						<TextField floatingLabelText='Username' hintText='Username' fullWidth/>
 						<TextField floatingLabelText='Password' hintText='Password' fullWidth/>
 						<div>
@@ -27,10 +30,18 @@ class LoginForm extends React.Component {
 							<FlatButton label='Forgot password?' onClick={handlePasswordForget} primary/>
 							<RaisedButton label='Login' type='submit' primary/>
 						</div>
-					</form>
+					</Form>
 				</CardText>
 			</Card>
 		);
+	}
+
+	getStyles = () => {
+		return {
+			cardContainer: {
+				height: '225px'
+			}
+		}
 	}
 }
 
