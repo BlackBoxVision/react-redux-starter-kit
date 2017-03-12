@@ -56,7 +56,7 @@
     "helmet": "^3.0.0",
     "helmet-csp": "^2.1.0",
     "isomorphic-fetch": "^2.2.1",
-    "material-ui": "^0.17.0",
+    "material-ui": "^1.0.0-alpha.7",
     "nodemailer": "^3.0.0",
     "rapscallion": "^2.1.1",
     "react": "^15.4.2",
