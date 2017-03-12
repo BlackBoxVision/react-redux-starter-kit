@@ -1,13 +1,16 @@
 import React from 'react';
 import Route from 'react-router/lib/Route';
 import IndexRedirect from 'react-router/lib/IndexRedirect';
-import Account from './components/account/Account.js';
-import Dashboard from './components/dashboard/Dashboard.js';
-import Login from './components/login/Login.js';
-import Layout from './components/common/Layout.js';
-import NotFound from './components/notFound/NotFound.js';
-import Register from './components/register/Register.js';
-import ResetPassword from './components/resetPassword/ResetPassword.js';
+
+import Profile from './components/profile/Profile';
+import Dashboard from './components/dashboard/Dashboard';
+import Login from './components/login/Login';
+import Layout from './components/common/Layout';
+import NotFound from './components/notFound/NotFound';
+import Register from './components/register/Register';
+import ResetPassword from './components/resetPassword/ResetPassword';
+import Settings from './components/settings/Settings';
+
 
 function getRoutes(store) {
     return (
@@ -17,7 +20,8 @@ function getRoutes(store) {
 		    {/*<Route path='login' component={Login} onEnter={checkAuth(props.store)}/>*/}
 		    {/*<Route path='dashboard' component={Dashboard} onEnter={checkAuth(props.store)}>*/}
             <Route path='dashboard' component={Dashboard}>
-                <Route path='account' component={Account}/>
+                <Route path='profile' component={Profile}/>
+                <Route path='settings' component={Settings}/>
             </Route>
             <Route path='register' component={Register}/>
             <Route path='resetPassword' component={ResetPassword}/>

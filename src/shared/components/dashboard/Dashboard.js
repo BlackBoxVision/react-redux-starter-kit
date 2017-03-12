@@ -2,7 +2,6 @@ import React, {PropTypes} from 'react';
 import AppBar from 'material-ui/AppBar/AppBar';
 import Drawer from 'material-ui/Drawer/Drawer';
 import Card from 'material-ui/Card/Card';
-import FlatButton from 'material-ui/FlatButton/FlatButton';
 import List from 'material-ui/List/List';
 import ListItem from 'material-ui/List/ListItem';
 import withRouter from 'react-router/lib/withRouter';
@@ -11,6 +10,7 @@ import Mobile from '../../utils/Mobile';
 import DashboardContainer from '../common/Container';
 import withResize from '../common/withResize';
 import DrawerHeader from './DrawerHeader';
+import AppBarMenu from './AppBarMenu';
 
 
 class Dashboard extends React.Component {
@@ -30,7 +30,7 @@ class Dashboard extends React.Component {
                 <AppBar
 	                title='My Awesome App'
                     onLeftIconButtonTouchTap={this.handleMenuTouch}
-                    iconElementRight={<FlatButton label='logout' onTouchTap={this.handleLogout}/>}
+                    iconElementRight={this.getIconElementRight()}
                 />
                 <Drawer
                     open={this.state.open}
@@ -50,11 +50,17 @@ class Dashboard extends React.Component {
         );
     }
 
+    getIconElementRight = () => {
+    	return (
+    		<AppBarMenu isMobile={Mobile.is() || this.props.width < 480}/>
+	    );
+    }
+
     shouldRenderDrawerHeader = () => {
-    	if (Mobile.is() || this.props.width < 480 ) {
+    	if (Mobile.is() || this.props.width < 480) {
     		return (
 			    <DrawerHeader/>
-		    )
+		    );
 	    }
 
 	    return false;
@@ -82,14 +88,12 @@ class Dashboard extends React.Component {
 	    }
     }
 
-	handleLogout = event => this.props.router.push('/login');
-
 	handleMenuTouch = event => this.setState({ open: !this.state.open });
 
 	handleMenuDrawer = open => this.setState({ open });
 
 	handleMenuItemTouch = event => {
-		this.props.router.push('/dashboard/account');
+		this.props.router.push('/dashboard/profile');
 
 		if (Mobile.is() || this.props.width < 480) {
 			this.handleMenuTouch(event);
