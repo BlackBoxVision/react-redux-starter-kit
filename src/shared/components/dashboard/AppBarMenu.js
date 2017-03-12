@@ -4,7 +4,10 @@ import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
 import IconButton from 'material-ui/IconButton';
 import AccountCircle from 'material-ui/svg-icons/action/account-circle';
+import Logout from 'material-ui/svg-icons/action/power-settings-new';
+import Settings from 'material-ui/svg-icons/action/settings';
 import MoreVert from 'material-ui/svg-icons/navigation/more-vert';
+import Person from 'material-ui/svg-icons/social/person';
 
 
 class AppBarMenu extends React.Component {
@@ -21,9 +24,21 @@ class AppBarMenu extends React.Component {
 				anchorOrigin={{horizontal: 'left', vertical: 'top'}}
 				targetOrigin={{horizontal: 'left', vertical: 'top'}}
 			>
-				<MenuItem primaryText="Profile" value="/dashboard/profile"/>
-				<MenuItem primaryText="Settings" value="/dashboard/settings"/>
-				<MenuItem primaryText="Logout" value="/login"/>
+				<MenuItem
+					leftIcon={<Person color="#757575"/>}
+					primaryText="Profile"
+					value="/dashboard/profile"
+				/>
+				<MenuItem
+					leftIcon={<Settings color="#757575"/>}
+					primaryText="Settings"
+					value="/dashboard/settings"
+				/>
+				<MenuItem
+					leftIcon={<Logout color="#757575"/>}
+					primaryText="Logout"
+					value="/login"
+				/>
 			</IconMenu>
 		);
 	}
