@@ -1,2 +1,2 @@
-# universal-react-redux-atomic-starter-kit
-Universal starter kit with React/Redux under Atomic Design approach
+# react-redux-starter-kit
+Universal starter kit with React/Redux
