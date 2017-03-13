@@ -51,7 +51,6 @@ module.exports = {
 		    minChunks: Infinity,
 		    filename: 'vendor.js',
 	    }),
-        new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.optimize.DedupePlugin(),
         new webpack.optimize.AggressiveMergingPlugin(),
         new webpack.optimize.UglifyJsPlugin({
