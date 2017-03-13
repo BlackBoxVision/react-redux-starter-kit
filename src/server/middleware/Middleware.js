@@ -5,6 +5,8 @@ import getRoutes from '../../shared/routes';
 import theme from '../../shared/theme';
 import Response from '../utils/Response';
 import Render from '../utils/Render';
+import Logger from '../utils/Logger';
+
 
 class Middleware {
     static async handleRender(request, response, next) {
@@ -35,11 +37,15 @@ class Middleware {
                 });
             }
         } catch (error) {
-            console.info('This is the error -> ' + error);
+            next(error);
         }
     }
 
     static handleErrors(error, request, response, next) {
+        if (error) {
+            Logger.error(`There was an error -> ${error}`);
+        }
+
         return next();
     }
 }

@@ -77,7 +77,7 @@ class Dashboard extends React.Component {
 			    marginRight: Mobile.is() || width < 480 ? '0px' : '20px',
 			    marginLeft:  Mobile.is() || width < 480 ? '0' : open && width > 992 ? '280px' : '20px',
 	            //TODO review these prop
-			    height: Mobile.is() || width < 480 ? '91%' : '86%'
+			    height: Mobile.is() || width < 480 ? '91%' : '86%',
 		    },
 		    cardContainerStyle: {
 			    padding: '20px',

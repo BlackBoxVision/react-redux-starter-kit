@@ -1,8 +1,8 @@
 import React, {PropTypes} from 'react';
 import withRouter from 'react-router/lib/withRouter';
-import IconMenu from 'material-ui/IconMenu';
-import MenuItem from 'material-ui/MenuItem';
-import IconButton from 'material-ui/IconButton';
+import IconMenu from 'material-ui/IconMenu/IconMenu';
+import MenuItem from 'material-ui/MenuItem/MenuItem';
+import IconButton from 'material-ui/IconButton/IconButton';
 import AccountCircle from 'material-ui/svg-icons/action/account-circle';
 import Logout from 'material-ui/svg-icons/action/power-settings-new';
 import Settings from 'material-ui/svg-icons/action/settings';
@@ -13,8 +13,29 @@ import Person from 'material-ui/svg-icons/social/person';
 class AppBarMenu extends React.Component {
 	static propTypes = {
 		isMobile: PropTypes.bool.isRequired,
+		menuItems: PropTypes.array,
 		image: PropTypes.string
 	};
+
+	static defaultProps = {
+		menuItems: [
+			{
+				primaryText: 'Profile',
+				value: '/dashboard/profile',
+				leftIcon: <Person color="#757575"/>
+			},
+			{
+				primaryText: 'Settings',
+				value: '/dashboard/settings',
+				leftIcon: <Settings color="#757575"/>
+			},
+			{
+				primaryText: 'Logout',
+				value: '/login',
+				leftIcon: <Logout color="#757575"/>
+			}
+		]
+	}
 
 	render() {
 		return (
@@ -24,21 +45,7 @@ class AppBarMenu extends React.Component {
 				anchorOrigin={{horizontal: 'left', vertical: 'top'}}
 				targetOrigin={{horizontal: 'left', vertical: 'top'}}
 			>
-				<MenuItem
-					leftIcon={<Person color="#757575"/>}
-					primaryText="Profile"
-					value="/dashboard/profile"
-				/>
-				<MenuItem
-					leftIcon={<Settings color="#757575"/>}
-					primaryText="Settings"
-					value="/dashboard/settings"
-				/>
-				<MenuItem
-					leftIcon={<Logout color="#757575"/>}
-					primaryText="Logout"
-					value="/login"
-				/>
+				{this.props.menuItems.map((item, index) => <MenuItem key={`menu-item-${index}`} {...item}/>)}
 			</IconMenu>
 		);
 	}
