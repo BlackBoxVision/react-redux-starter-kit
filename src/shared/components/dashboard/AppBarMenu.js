@@ -45,9 +45,18 @@ class AppBarMenu extends React.Component {
 				anchorOrigin={{horizontal: 'left', vertical: 'top'}}
 				targetOrigin={{horizontal: 'left', vertical: 'top'}}
 			>
-				{this.props.menuItems.map((item, index) => <MenuItem key={`menu-item-${index}`} {...item}/>)}
+				{this.props.menuItems.map(this.renderMenuItem)}
 			</IconMenu>
 		);
+	}
+
+	renderMenuItem = (menuItem, index) => {
+		return (
+			<MenuItem
+				key={`menu-item-${index}`}
+				{...menuItem}
+			/>
+		)
 	}
 
 	onItemTouch = (event, child) => this.props.router.push(child.props.value);
