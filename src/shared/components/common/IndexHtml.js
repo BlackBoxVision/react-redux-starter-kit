@@ -24,6 +24,8 @@ class IndexHtml extends Component {
                     <meta name='author' content=''/>
                     <meta name='description' content=''/>
                     <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
+                    <meta name="mobile-web-app-capable" content="yes"/>
+                    <meta name="theme-color" content="#673ab7"/>
 
                     <meta property='og:title' content=''/>
                     <meta property='og:type' content=''/>

@@ -33,7 +33,7 @@ export default class Render {
                 theme={appTheme}
                 renderOnServer
             />
-        )
+        );
     }
 
     static getHtml({ renderProps, request, store, theme }) {

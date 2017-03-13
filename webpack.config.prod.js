@@ -2,6 +2,7 @@ const webpack = require('webpack');
 
 module.exports = {
 	devtool: 'cheap-module-source-map',
+    cache: false,
     entry: {
         app: [
             './src/client/index.js',
@@ -11,13 +12,11 @@ module.exports = {
             'react-dom',
         ]
     },
-
     output: {
         path: __dirname + '/dist/',
         filename: 'app.js',
         publicPath: '/',
     },
-
     resolve: {
         extensions: ['', '.js', '.jsx'],
         modules: [
@@ -25,7 +24,6 @@ module.exports = {
             'node_modules'
         ],
     },
-
     module: {
         loaders: [
             {
@@ -55,12 +53,21 @@ module.exports = {
 	    }),
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.optimize.DedupePlugin(),
+        new webpack.optimize.AggressiveMergingPlugin(),
         new webpack.optimize.UglifyJsPlugin({
             minimize: true,
-            compressor: {
-              warnings: false,
-            }
-        }),
-        new webpack.optimize.AggressiveMergingPlugin()
+            mangle: true,
+            compress: {
+                warnings: false, // Suppress uglification warnings
+                pure_getters: true,
+                unsafe: true,
+                unsafe_comps: true,
+                screw_ie8: true
+            },
+            output: {
+                comments: false,
+            },
+            exclude: [/\.min\.js$/gi]
+        })
     ],
 };

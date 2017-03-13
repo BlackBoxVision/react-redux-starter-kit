@@ -13,6 +13,11 @@
         "production": {
             "presets": [
                 "react-optimize"
+            ],
+            "plugins": [
+              "transform-decorators-legacy",
+              "transform-object-rest-spread",
+              "lodash"
             ]
         }
     }
