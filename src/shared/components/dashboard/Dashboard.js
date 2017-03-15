@@ -89,7 +89,7 @@ class Dashboard extends React.Component {
 	handleMenuItemTouch = event => {
 		this.props.router.push('/dashboard/profile');
 
-		if (this.props.isMobile()) {
+		if (this.props.isMobile() || this.props.width < 992) {
 			this.handleMenuTouch(event);
 		}
 	};

@@ -81,16 +81,14 @@ class AppBarMenu extends React.Component {
 		)
 	}
 
-	getStyles = () => {
-		return {
-			image: {
-				width: "60px",
-				height: "60px",
-				marginBottom: "10px",
-				borderRadius: "50%"
-			}
+	getStyles = () => ({
+		image: {
+			width: "36px",
+			height: "36px",
+			marginBottom: "10px",
+			borderRadius: "50%"
 		}
-	}
+	});
 }
 
 export default withRouter(AppBarMenu);
