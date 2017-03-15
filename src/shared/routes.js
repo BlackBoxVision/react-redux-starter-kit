@@ -5,7 +5,7 @@ import IndexRedirect from 'react-router/lib/IndexRedirect';
 import Profile from './components/profile/Profile';
 import Dashboard from './components/dashboard/Dashboard';
 import Login from './components/login/Login';
-import Layout from './components/common/Layout';
+import Layout from './components/common/container/Layout';
 import NotFound from './components/notFound/NotFound';
 import Register from './components/register/Register';
 import ResetPassword from './components/resetPassword/ResetPassword';

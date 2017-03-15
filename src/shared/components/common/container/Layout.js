@@ -1,6 +1,7 @@
 import React, { Component ,PropTypes } from 'react';
 import Container from './Container';
 
+
 class Layout extends Component {
     static propTypes = {
         children: PropTypes.any.isRequired

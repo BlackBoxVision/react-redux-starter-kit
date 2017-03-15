@@ -2,7 +2,7 @@ import React, {PropTypes} from 'react';
 import Card from 'material-ui/Card/Card';
 import CardText from 'material-ui/Card/CardText';
 
-import FlexContainer from '../common/FlexContainer';
+import FlexContainer from '../common/container/FlexContainer';
 import Mobile from '../../utils/Mobile';
 
 

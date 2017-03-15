@@ -1,5 +1,5 @@
 import React from 'react';
-import Mobile from '../../utils/Mobile';
+import Mobile from '../../../utils/Mobile';
 
 
 export default function withResize(ReactComponent) {

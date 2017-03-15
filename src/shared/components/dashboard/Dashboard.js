@@ -6,8 +6,8 @@ import List from 'material-ui/List/List';
 import ListItem from 'material-ui/List/ListItem';
 import withRouter from 'react-router/lib/withRouter';
 
-import DashboardContainer from '../common/Container';
-import withResize from '../common/withResize';
+import DashboardContainer from '../common/container/Container';
+import withResize from '../common/HOCs/withResize';
 
 import DrawerHeader from './DrawerHeader';
 import AppBarMenu from './AppBarMenu';

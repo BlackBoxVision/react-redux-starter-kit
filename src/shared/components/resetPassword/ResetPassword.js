@@ -4,8 +4,8 @@ import withRouter from 'react-router/lib/withRouter';
 import ResetPasswordForm from './ResetPasswordForm';
 import ResetPasswordFormMobile from './ResetPasswordFormMobile';
 
-import FlexContainer from '../common/FlexContainer';
-import withResize from '../common/withResize';
+import FlexContainer from '../common/container/FlexContainer';
+import withResize from '../common/HOCs/withResize';
 
 
 class ResetPassword extends React.Component {

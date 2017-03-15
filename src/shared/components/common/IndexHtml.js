@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
-import Container from './Container';
-import Body from './Body';
-import Html from './Html';
+import Container from './container/Container';
+import Body from './html/Body';
+import Html from './html/Html';
 
 class IndexHtml extends Component {
     static propTypes = {
