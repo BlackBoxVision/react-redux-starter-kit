@@ -2,7 +2,7 @@ const webpack = require('webpack');
 
 module.exports = {
 	devtool: 'cheap-module-source-map',
-    cache: false,
+    cache: true,
     entry: {
         app: [
             './src/client/index.js',
@@ -52,7 +52,6 @@ module.exports = {
 		    filename: 'vendor.js',
 	    }),
         new webpack.optimize.DedupePlugin(),
-        new webpack.optimize.AggressiveMergingPlugin(),
         new webpack.optimize.UglifyJsPlugin({
             minimize: true,
             mangle: true,
@@ -67,6 +66,7 @@ module.exports = {
                 comments: false,
             },
             exclude: [/\.min\.js$/gi]
-        })
+        }),
+        new webpack.optimize.AggressiveMergingPlugin()
     ],
 };

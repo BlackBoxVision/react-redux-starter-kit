@@ -1,13 +1,10 @@
 import React, {PropTypes} from 'react';
 import withRouter from 'react-router/lib/withRouter';
 
-import ResetPasswordContainer from '../common/Container';
-import FlexContainer from '../common/FlexContainer';
-
 import ResetPasswordForm from './ResetPasswordForm';
 import ResetPasswordFormMobile from './ResetPasswordFormMobile';
 
-import Mobile from '../../utils/Mobile';
+import FlexContainer from '../common/FlexContainer';
 import withResize from '../common/withResize';
 
 
@@ -24,7 +21,7 @@ class ResetPassword extends React.Component {
     }
 
     getResetPasswordForm = () => {
-        if (this.isMobile()) {
+        if (this.props.isMobile()) {
             return (
                 <ResetPasswordFormMobile handleLogin={this.handleLogin}/>
             )
@@ -38,12 +35,10 @@ class ResetPassword extends React.Component {
 	getStyles = () => {
 		return {
 			container: {
-				backgroundColor: this.isMobile() ? "white" : "#E0E0E0"
+				backgroundColor: this.props.isMobile() ? "white" : "#E0E0E0"
 			}
 		};
 	}
-
-    isMobile = () => Mobile.is() || this.props.width < 480;
 
 	handleLogin = event => this.props.router.push('/login');
 }

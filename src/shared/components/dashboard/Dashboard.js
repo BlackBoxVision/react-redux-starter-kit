@@ -6,9 +6,9 @@ import List from 'material-ui/List/List';
 import ListItem from 'material-ui/List/ListItem';
 import withRouter from 'react-router/lib/withRouter';
 
-import Mobile from '../../utils/Mobile';
 import DashboardContainer from '../common/Container';
 import withResize from '../common/withResize';
+
 import DrawerHeader from './DrawerHeader';
 import AppBarMenu from './AppBarMenu';
 
@@ -19,7 +19,7 @@ class Dashboard extends React.Component {
     };
 
     state = {
-        open: this.isMobile() ? false : true
+        open: this.props.isMobile() ? false : true
     };
 
     render() {
@@ -36,7 +36,7 @@ class Dashboard extends React.Component {
                     open={this.state.open}
 	                containerStyle={styles.drawerStyle}
 	                onRequestChange={this.handleMenuDrawer}
-                    docked={this.isMobile() ? false : true}
+                    docked={this.props.isMobile() ? false : true}
                 >
 	                {this.shouldRenderDrawerHeader()}
                     <List>
@@ -52,12 +52,12 @@ class Dashboard extends React.Component {
 
     getIconElementRight = () => {
     	return (
-    		<AppBarMenu isMobile={this.isMobile()}/>
+    		<AppBarMenu isMobile={this.props.isMobile()}/>
 	    );
     }
 
     shouldRenderDrawerHeader = () => {
-    	if (Mobile.is() || this.props.width < 480) {
+    	if (this.props.isMobile()) {
     		return (
 			    <DrawerHeader/>
 		    );
@@ -72,22 +72,20 @@ class Dashboard extends React.Component {
 
     	return {
 		    cardStyle: {
-			    marginTop: this.isMobile() < 480 ? '0px' : '20px',
-			    marginBottom: this.isMobile() < 480 ? '0px' : '20px',
-			    marginRight: this.isMobile() ? '0px' : '20px',
-			    marginLeft:  this.isMobile() ? '0' : open && width > 992 ? '280px' : '20px',
-			    height: this.isMobile() ? 'calc(100vh - 64px)' : 'calc(100vh - 104px)',
+			    marginTop: this.props.isMobile() < 480 ? '0px' : '20px',
+			    marginBottom: this.props.isMobile() < 480 ? '0px' : '20px',
+			    marginRight: this.props.isMobile() ? '0px' : '20px',
+			    marginLeft:  this.props.isMobile() ? '0' : open && width > 992 ? '280px' : '20px',
+			    height: this.props.isMobile() ? 'calc(100vh - 64px)' : 'calc(100vh - 104px)',
 		    },
 		    cardContainerStyle: {
 			    padding: '20px',
 			},
 		    drawerStyle: {
-	    		marginTop: this.isMobile() ? '0px' : '64px'
+	    		marginTop: this.props.isMobile() ? '0px' : '64px'
 		    }
 	    }
     }
-
-    isMobile = () => Mobile.is() || this.props.width < 480;
 
 	handleMenuTouch = event => this.setState({ open: !this.state.open });
 
@@ -96,7 +94,7 @@ class Dashboard extends React.Component {
 	handleMenuItemTouch = event => {
 		this.props.router.push('/dashboard/profile');
 
-		if (this.isMobile()) {
+		if (this.props.isMobile()) {
 			this.handleMenuTouch(event);
 		}
 	}

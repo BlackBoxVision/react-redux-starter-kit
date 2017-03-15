@@ -1,11 +1,10 @@
 import React, {PropTypes} from 'react';
 import withRouter from 'react-router/lib/withRouter';
 
-import Mobile from '../../utils/Mobile';
-import FlexContainer from '../common/FlexContainer';
-import LoginFormMobile from './LoginFormMobile';
 import LoginForm from './LoginForm';
+import LoginFormMobile from './LoginFormMobile';
 
+import FlexContainer from '../common/FlexContainer';
 import withResize from '../common/withResize';
 
 
@@ -22,7 +21,7 @@ class Login extends React.Component {
     }
 
     getLoginForm = () => {
-        if (this.isMobile()) {
+        if (this.props.isMobile()) {
             return (
                 <LoginFormMobile
                     handleSubmit={this.handleSubmit}
@@ -44,12 +43,10 @@ class Login extends React.Component {
     getStyles = () => {
     	return {
     		container: {
-			    backgroundColor: this.isMobile() ? "white" : "#E0E0E0"
+			    backgroundColor: this.props.isMobile() ? "white" : "#E0E0E0"
 		    }
 	    };
     }
-
-    isMobile = () => Mobile.is() || this.props.width < 480;
 
 	handleSubmit = event => this.props.router.push('/dashboard');
 
