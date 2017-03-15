@@ -24,7 +24,7 @@ class ResetPassword extends React.Component {
     }
 
     getResetPasswordForm = () => {
-        if (Mobile.is() || this.props.width < 480) {
+        if (this.isMobile()) {
             return (
                 <ResetPasswordFormMobile handleLogin={this.handleLogin}/>
             )
@@ -38,10 +38,12 @@ class ResetPassword extends React.Component {
 	getStyles = () => {
 		return {
 			container: {
-				backgroundColor: Mobile.is() || this.props.width < 480 ? "white" : "#E0E0E0"
+				backgroundColor: this.isMobile() ? "white" : "#E0E0E0"
 			}
 		};
 	}
+
+    isMobile = () => Mobile.is() || this.props.width < 480;
 
 	handleLogin = event => this.props.router.push('/login');
 }

@@ -22,7 +22,7 @@ class Register extends React.Component {
     }
 
     getRegisterForm = () => {
-        if (Mobile.is() || this.props.width < 480) {
+        if (this.isMobile()) {
             return (
                 <RegisterFormMobile handleLogin={this.handleLogin}/>
             );
@@ -36,10 +36,12 @@ class Register extends React.Component {
 	getStyles = () => {
 		return {
 			container: {
-				backgroundColor: Mobile.is() || this.props.width < 480 ? "white" : "#E0E0E0"
+				backgroundColor: this.isMobile() ? "white" : "#E0E0E0"
 			}
 		};
 	}
+
+    isMobile = () => Mobile.is() || this.props.width < 480;
 
 	handleLogin = event => this.props.router.push('/login');
 }

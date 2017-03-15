@@ -19,7 +19,7 @@ class Dashboard extends React.Component {
     };
 
     state = {
-        open: Mobile.is() || this.props.width < 480 ? false : true
+        open: this.isMobile() ? false : true
     };
 
     render() {
@@ -36,7 +36,7 @@ class Dashboard extends React.Component {
                     open={this.state.open}
 	                containerStyle={styles.drawerStyle}
 	                onRequestChange={this.handleMenuDrawer}
-                    docked={Mobile.is() || this.props.width < 480 ? false : true}
+                    docked={this.isMobile() ? false : true}
                 >
 	                {this.shouldRenderDrawerHeader()}
                     <List>
@@ -52,7 +52,7 @@ class Dashboard extends React.Component {
 
     getIconElementRight = () => {
     	return (
-    		<AppBarMenu isMobile={Mobile.is() || this.props.width < 480}/>
+    		<AppBarMenu isMobile={this.isMobile()}/>
 	    );
     }
 
@@ -72,20 +72,22 @@ class Dashboard extends React.Component {
 
     	return {
 		    cardStyle: {
-			    marginTop: Mobile.is() || width < 480 ? '0px' : '20px',
-			    marginBottom: Mobile.is() || width < 480 ? '0px' : '20px',
-			    marginRight: Mobile.is() || width < 480 ? '0px' : '20px',
-			    marginLeft:  Mobile.is() || width < 480 ? '0' : open && width > 992 ? '280px' : '20px',
-			    height: Mobile.is() || width < 480 ? 'calc(100vh - 64px)' : 'calc(100vh - 104px)',
+			    marginTop: this.isMobile() < 480 ? '0px' : '20px',
+			    marginBottom: this.isMobile() < 480 ? '0px' : '20px',
+			    marginRight: this.isMobile() ? '0px' : '20px',
+			    marginLeft:  this.isMobile() ? '0' : open && width > 992 ? '280px' : '20px',
+			    height: this.isMobile() ? 'calc(100vh - 64px)' : 'calc(100vh - 104px)',
 		    },
 		    cardContainerStyle: {
 			    padding: '20px',
 			},
 		    drawerStyle: {
-	    		marginTop: Mobile.is() || width < 480 ? '0px' : '64px'
+	    		marginTop: this.isMobile() ? '0px' : '64px'
 		    }
 	    }
     }
+
+    isMobile = () => Mobile.is() || this.props.width < 480;
 
 	handleMenuTouch = event => this.setState({ open: !this.state.open });
 
@@ -94,7 +96,7 @@ class Dashboard extends React.Component {
 	handleMenuItemTouch = event => {
 		this.props.router.push('/dashboard/profile');
 
-		if (Mobile.is() || this.props.width < 480) {
+		if (this.isMobile()) {
 			this.handleMenuTouch(event);
 		}
 	}
