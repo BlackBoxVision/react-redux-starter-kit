@@ -67,8 +67,8 @@ class Dashboard extends React.Component {
     }
 
     getStyles = () => {
-    	const { width } = this.props;
-    	const { open } = this.state;
+    	let { width } = this.props;
+    	let { open } = this.state;
 
     	return {
 		    cardStyle: {
@@ -76,7 +76,7 @@ class Dashboard extends React.Component {
 			    marginBottom: Mobile.is() || width < 480 ? '0px' : '20px',
 			    marginRight: Mobile.is() || width < 480 ? '0px' : '20px',
 			    marginLeft:  Mobile.is() || width < 480 ? '0' : open && width > 992 ? '280px' : '20px',
-			    height: Mobile.is() || width < 480 ? '100vh' : '86%',
+			    height: Mobile.is() || width < 480 ? 'calc(100vh - 64px)' : 'calc(100vh - 104px)',
 		    },
 		    cardContainerStyle: {
 			    padding: '20px',
