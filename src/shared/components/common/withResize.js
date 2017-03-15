@@ -3,7 +3,7 @@ import Mobile from '../../utils/Mobile';
 
 
 export default function withResize(ReactComponent) {
-	return class ResizeEvenListener extends React.Component {
+	return class ResizeEventListener extends React.Component {
 		state = {
 			width: 0,
 			height: 0

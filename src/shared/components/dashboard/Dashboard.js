@@ -34,7 +34,7 @@ class Dashboard extends React.Component {
                 />
                 <Drawer
                     open={this.state.open}
-	                containerStyle={styles.drawerStyle}
+	                containerStyle={styles.drawer}
 	                onRequestChange={this.handleMenuDrawer}
                     docked={this.props.isMobile() ? false : true}
                 >
@@ -43,7 +43,7 @@ class Dashboard extends React.Component {
                         <ListItem primaryText='Account' value='account' onTouchTap={this.handleMenuItemTouch}/>
                     </List>
                 </Drawer>
-                <Card style={styles.cardStyle} containerStyle={styles.cardContainerStyle}>
+                <Card style={styles.card} containerStyle={styles.cardContainer}>
                     {this.props.children}
                 </Card>
             </DashboardContainer>
@@ -66,26 +66,21 @@ class Dashboard extends React.Component {
 	    return false;
     }
 
-    getStyles = () => {
-    	let { width } = this.props;
-    	let { open } = this.state;
-
-    	return {
-		    cardStyle: {
-			    marginTop: this.props.isMobile() < 480 ? '0px' : '20px',
-			    marginBottom: this.props.isMobile() < 480 ? '0px' : '20px',
-			    marginRight: this.props.isMobile() ? '0px' : '20px',
-			    marginLeft:  this.props.isMobile() ? '0' : open && width > 992 ? '280px' : '20px',
-			    height: this.props.isMobile() ? 'calc(100vh - 64px)' : 'calc(100vh - 104px)',
-		    },
-		    cardContainerStyle: {
-			    padding: '20px',
-			},
-		    drawerStyle: {
-	    		marginTop: this.props.isMobile() ? '0px' : '64px'
-		    }
-	    }
-    }
+    getStyles = () => ({
+        card: {
+            marginTop: this.props.isMobile() < 480 ? '0px' : '20px',
+            marginBottom: this.props.isMobile() < 480 ? '0px' : '20px',
+            marginRight: this.props.isMobile() ? '0px' : '20px',
+            marginLeft:  this.props.isMobile() ? '0' : this.state.open && this.props.width > 992 ? '280px' : '20px',
+            height: this.props.isMobile() ? 'calc(100vh - 64px)' : 'calc(100vh - 104px)',
+        },
+        cardContainer: {
+            padding: '20px',
+        },
+        drawer: {
+            marginTop: this.props.isMobile() ? '0px' : '64px'
+        }
+    });
 
 	handleMenuTouch = event => this.setState({ open: !this.state.open });
 

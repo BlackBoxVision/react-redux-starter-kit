@@ -40,13 +40,11 @@ class Login extends React.Component {
         }
     }
 
-    getStyles = () => {
-    	return {
-    		container: {
-			    backgroundColor: this.props.isMobile() ? "white" : "#E0E0E0"
-		    }
-	    };
-    }
+    getStyles = () => ({
+        container: {
+            backgroundColor: this.props.isMobile() ? "white" : "#E0E0E0"
+        }
+    });
 
 	handleSubmit = event => this.props.router.push('/dashboard');
 
