@@ -13,8 +13,8 @@ import lightBaseTheme from './theme';
 
 injectTapEventPlugin();
 
-function getStore() {
-    return typeof window !== 'undefined' ? configureStore( window.__INITIAL_STATE__) : {};
+function getInitialState() {
+    return typeof window !== 'undefined' ? window.__INITIAL_STATE__ : {};
 }
 
 class App extends React.Component {
@@ -30,7 +30,7 @@ class App extends React.Component {
     static defaultProps = {
         renderOnServer: false,
         theme: lightBaseTheme,
-        store: getStore(),
+        store: configureStore(getInitialState()),
         history: browserHistory,
     };
 
