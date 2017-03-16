@@ -83,8 +83,8 @@ class AppBarMenu extends React.Component {
 
 	getStyles = () => ({
 		image: {
-			width: "36px",
-			height: "36px",
+			width: "100%",
+			height: "100%",
 			marginBottom: "10px",
 			borderRadius: "50%"
 		}

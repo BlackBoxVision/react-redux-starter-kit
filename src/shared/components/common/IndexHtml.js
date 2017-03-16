@@ -33,7 +33,7 @@ class IndexHtml extends Component {
                     <meta property='og:image' content={icon}/>
 
                     <title>{title}</title>
-
+                    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"/>
                     <style dangerouslySetInnerHTML={{__html: styles}}/>
                 </head>
                 <Body>
