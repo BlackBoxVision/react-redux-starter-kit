@@ -10,14 +10,15 @@ class IndexHtml extends Component {
         content: PropTypes.string.isRequired,
         store: PropTypes.object.isRequired,
         styles: PropTypes.string.isRequired,
-	    meta: PropTypes.array,
+	    metadata: PropTypes.array,
+	    links: PropTypes.array,
         title: PropTypes.string,
         icon: PropTypes.string
     }
 
     static defaultProps = {
     	title: 'Awesome App',
-        meta: [
+        metadata: [
             {
                 httpEquiv: 'Content-Type',
                 content: 'text/html',
@@ -39,18 +40,24 @@ class IndexHtml extends Component {
 		        name: 'theme-color',
 		        content: '#673ab7',
 	        }
-        ]
+        ],
+	    links: [
+		    {
+		    	href: 'https://fonts.googleapis.com/css?family=Roboto',
+			    rel: 'stylesheet'
+		    }
+	    ]
     }
 
     render() {
-        const { content, store, styles, title, baseUrl, meta } = this.props;
+        const { content, store, styles, title, baseUrl, metadata, links } = this.props;
 
         return (
             <Html lang='en'>
                 <head>
-                    {meta.map(this.renderMetaTags)}
-                    <title>{title}</title>
-                    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"/>
+	                <title>{title}</title>
+                    {metadata.map(this.renderMetadata)}
+	                {links.map(this.renderLinks)}
                     <style dangerouslySetInnerHTML={{__html: styles}}/>
                 </head>
                 <Body>
@@ -63,7 +70,9 @@ class IndexHtml extends Component {
         )
     }
 
-    renderMetaTags = (metadata, index) => <meta key={`meta-${index}-key`} {...metadata}/>;
+    renderMetadata = (metadata, index) => <meta key={`meta-${index}-key`} {...metadata}/>;
+
+    renderLinks = (link, index) => <link key={`link-${index}-key`} {...link}/>
 }
 
 export default IndexHtml;
