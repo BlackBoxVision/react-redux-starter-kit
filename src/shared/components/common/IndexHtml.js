@@ -47,7 +47,7 @@ class IndexHtml extends Component {
         return (
             <Html lang='en'>
                 <head>
-                    {meta.map((metadata, index) => <meta key={`meta-${index}-key`} {...metadata}/>)}
+                    {meta.map(this.renderMetaTags)}
                     <title>{title}</title>
                     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"/>
                     <style dangerouslySetInnerHTML={{__html: styles}}/>
@@ -61,6 +61,8 @@ class IndexHtml extends Component {
             </Html>
         )
     }
+
+    renderMetaTags = (metadata, index) => <meta key={`meta-${index}-key`} {...metadata}/>;
 }
 
 export default IndexHtml;
