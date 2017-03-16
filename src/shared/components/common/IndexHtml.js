@@ -16,6 +16,7 @@ class IndexHtml extends Component {
     }
 
     static defaultProps = {
+    	title: 'Awesome App',
         meta: [
             {
                 httpEquiv: 'Content-Type',
