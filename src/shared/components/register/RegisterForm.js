@@ -14,8 +14,6 @@ class RegisterForm extends React.Component {
 	};
 
 	render() {
-		const styles = this.getStyles();
-
 		return (
 			<Card>
 				<CardText>
@@ -30,14 +28,6 @@ class RegisterForm extends React.Component {
 				</CardText>
 			</Card>
 		)
-	}
-
-	getStyles = () => {
-		return {
-			cardContainer: {
-				height: '225px'
-			}
-		}
 	}
 }
 

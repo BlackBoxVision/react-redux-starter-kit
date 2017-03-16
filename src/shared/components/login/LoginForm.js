@@ -17,7 +17,6 @@ class LoginForm extends React.Component {
 
 	render() {
 		const { handleSubmit, handleRegister, handlePasswordForget } = this.props;
-		const styles = this.getStyles();
 
 		return (
 			<Card>
@@ -34,14 +33,6 @@ class LoginForm extends React.Component {
 				</CardText>
 			</Card>
 		);
-	}
-
-	getStyles = () => {
-		return {
-			cardContainer: {
-				height: '225px'
-			}
-		}
 	}
 }
 
