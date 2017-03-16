@@ -10,30 +10,44 @@ class IndexHtml extends Component {
         content: PropTypes.string.isRequired,
         store: PropTypes.object.isRequired,
         styles: PropTypes.string.isRequired,
+	    meta: PropTypes.array,
         title: PropTypes.string,
         icon: PropTypes.string
     }
 
+    static defaultProps = {
+        meta: [
+            {
+                httpEquiv: 'Content-Type',
+                content: 'text/html',
+                charSet: 'utf-8'
+            },
+            {
+	            httpEquiv: 'X-UA-Compatible',
+	            content: 'IE=9; IE=8; IE=7; IE=EDGE',
+            },
+	        {
+		        name: 'viewport',
+		        content: 'width=device-width, initial-scale=1.0',
+	        },
+	        {
+		        name: 'mobile-web-app-capable',
+		        content: 'yes',
+	        },
+	        {
+		        name: 'theme-color',
+		        content: '#673ab7',
+	        }
+        ]
+    }
+
     render() {
-        const { content, store, styles, title, icon, baseUrl } = this.props;
+        const { content, store, styles, title, baseUrl, meta } = this.props;
 
         return (
             <Html lang='en'>
                 <head>
-                    <meta httpEquiv='Content-Type' content='text/html' charSet='utf-8'/>
-                    <meta httpEquiv='X-UA-Compatible' content='IE=9; IE=8; IE=7; IE=EDGE'/>
-                    <meta name='keywords' content=''/>
-                    <meta name='author' content=''/>
-                    <meta name='description' content=''/>
-                    <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
-                    <meta name="mobile-web-app-capable" content="yes"/>
-                    <meta name="theme-color" content="#673ab7"/>
-
-                    <meta property='og:title' content=''/>
-                    <meta property='og:type' content=''/>
-                    <meta property='og:url' content=''/>
-                    <meta property='og:image' content={icon}/>
-
+                    {meta.map((metadata, index) => <meta key={`meta-${index}-key`} {...metadata}/>)}
                     <title>{title}</title>
                     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"/>
                     <style dangerouslySetInnerHTML={{__html: styles}}/>
