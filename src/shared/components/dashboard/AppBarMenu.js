@@ -12,6 +12,7 @@ import Person from 'material-ui/svg-icons/social/person';
 
 class AppBarMenu extends React.Component {
 	static propTypes = {
+		isTablet: PropTypes.bool.isRequired,
 		isMobile: PropTypes.bool.isRequired,
 		menuItems: PropTypes.array,
 		image: PropTypes.string
@@ -64,7 +65,7 @@ class AppBarMenu extends React.Component {
 	getIconButton = () => {
 		let content = <MoreVert color="white"/>;
 
-		if (!this.props.isMobile) {
+		if (!this.props.isMobile && !this.props.isTablet) {
 			const styles = this.getStyles();
 
 			if (this.props.image) {

@@ -5,7 +5,7 @@ import RegisterForm from './RegisterForm';
 import RegisterFormMobile from './RegisterFormMobile';
 
 import FlexContainer from '../common/container/FlexContainer';
-import withResize from '../common/HOCs/withResize';
+import withResize from '../common/hocs/withResize';
 
 
 class Register extends React.Component {

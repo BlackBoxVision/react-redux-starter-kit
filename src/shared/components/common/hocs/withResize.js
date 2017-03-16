@@ -29,9 +29,9 @@ export default function withResize(ReactComponent) {
 
 		isMobile = () => Mobile.is() || this.state.width < 480;
 
-		isTablet = () => Mobile.is() || this.state.width < 992;
+		isTablet = () => Mobile.is() || this.state.width < 768;
 
-		isDesktop = () => !Mobile.is();
+		isDesktop = () => !Mobile.is() || this.state.width > 768;
 
 		handleResize = () => this.setState({
 			width: window.innerWidth || document.documentElement.clientWidth || body.clientWidth,

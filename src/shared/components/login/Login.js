@@ -5,7 +5,7 @@ import LoginForm from './LoginForm';
 import LoginFormMobile from './LoginFormMobile';
 
 import FlexContainer from '../common/container/FlexContainer';
-import withResize from '../common/HOCs/withResize';
+import withResize from '../common/hocs/withResize';
 
 
 class Login extends React.Component {

@@ -5,7 +5,7 @@ import ResetPasswordForm from './ResetPasswordForm';
 import ResetPasswordFormMobile from './ResetPasswordFormMobile';
 
 import FlexContainer from '../common/container/FlexContainer';
-import withResize from '../common/HOCs/withResize';
+import withResize from '../common/hocs/withResize';
 
 
 class ResetPassword extends React.Component {
