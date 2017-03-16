@@ -39,12 +39,13 @@ export default class Render {
     static getHtml({ baseUrl, renderProps, request, store, theme }) {
         const content = Render.getContent({ renderProps, request, store, theme });
         const styles = styleSheet.rules().map(rule => rule.cssText).join('\n');
+        const state = store.getState();
 
         const html = (
             <Html
                 baseUrl={baseUrl}
                 content={content}
-                store={store}
+                state={state}
                 styles={styles}
             />
         );

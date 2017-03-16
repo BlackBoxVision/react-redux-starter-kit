@@ -8,7 +8,7 @@ class IndexHtml extends Component {
     static propTypes = {
         baseUrl: PropTypes.string.isRequired,
         content: PropTypes.string.isRequired,
-        store: PropTypes.object.isRequired,
+        state: PropTypes.object.isRequired,
         styles: PropTypes.string.isRequired,
 	    metadata: PropTypes.array,
 	    links: PropTypes.array,
@@ -50,7 +50,7 @@ class IndexHtml extends Component {
     }
 
     render() {
-        const { content, store, styles, title, baseUrl, metadata, links } = this.props;
+        const { content, state, styles, title, baseUrl, metadata, links } = this.props;
 
         return (
             <Html lang='en'>
@@ -62,7 +62,7 @@ class IndexHtml extends Component {
                 </head>
                 <Body>
                     <Container id='app' dangerouslySetInnerHTML={{__html: content}}/>
-                    <script charSet='UTF-8' dangerouslySetInnerHTML={{__html: `window.__INITIAL_STATE__=${JSON.stringify(store.getState())};`}}/>
+                    <script charSet='UTF-8' dangerouslySetInnerHTML={{__html: `window.__INITIAL_STATE__=${JSON.stringify(state)};`}}/>
                     <script charSet='UTF-8' src={`http://${baseUrl}/vendor.js`}/>
                     <script charSet='UTF-8' src={`http://${baseUrl}/app.js`}/>
                 </Body>
