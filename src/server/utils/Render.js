@@ -36,12 +36,13 @@ export default class Render {
         );
     }
 
-    static getHtml({ renderProps, request, store, theme }) {
+    static getHtml({ baseUrl, renderProps, request, store, theme }) {
         const content = Render.getContent({ renderProps, request, store, theme });
         const styles = styleSheet.rules().map(rule => rule.cssText).join('\n');
 
         const html = (
             <Html
+                baseUrl={baseUrl}
                 content={content}
                 store={store}
                 styles={styles}

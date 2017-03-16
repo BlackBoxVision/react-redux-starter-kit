@@ -7,9 +7,12 @@ import Response from '../utils/Response';
 import Render from '../utils/Render';
 import Logger from '../utils/Logger';
 
+import Config from '../config';
+
 
 class Middleware {
     static async handleRender(request, response, next) {
+        const baseUrl = Config.BASE_URL;
         const store = configureStore();
 
         try {
@@ -28,7 +31,7 @@ class Middleware {
                     headers: {
                         'Content-Type': 'text/html; charset=utf-8'
                     },
-                    data: Render.getHtml({ renderProps, request, store, theme })
+                    data: Render.getHtml({ baseUrl, renderProps, request, store, theme })
                 });
             } else {
                 Response.send(response, {

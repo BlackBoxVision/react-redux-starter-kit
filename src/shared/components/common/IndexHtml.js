@@ -2,11 +2,11 @@ import React, { Component, PropTypes } from 'react';
 import Container from './container/Container';
 import Body from './html/Body';
 import Html from './html/Html';
-import Config from '../../../server/config';
 
 
 class IndexHtml extends Component {
     static propTypes = {
+        baseUrl: PropTypes.string.isRequired,
         content: PropTypes.string.isRequired,
         store: PropTypes.object.isRequired,
         styles: PropTypes.string.isRequired,
@@ -15,7 +15,7 @@ class IndexHtml extends Component {
     }
 
     render() {
-        const { content, store, styles, title, icon } = this.props;
+        const { content, store, styles, title, icon, baseUrl } = this.props;
 
         return (
             <Html lang='en'>
@@ -41,8 +41,8 @@ class IndexHtml extends Component {
                 <Body>
                     <Container id='app' dangerouslySetInnerHTML={{__html: content}}/>
                     <script charSet='UTF-8' dangerouslySetInnerHTML={{__html: `window.__INITIAL_STATE__=${JSON.stringify(store.getState())};`}}/>
-                    <script charSet='UTF-8' src={`http://${Config.BASE_URL}/vendor.js`}/>
-                    <script charSet='UTF-8' src={`http://${Config.BASE_URL}/app.js`}/>
+                    <script charSet='UTF-8' src={`http://${baseUrl}/vendor.js`}/>
+                    <script charSet='UTF-8' src={`http://${baseUrl}/app.js`}/>
                 </Body>
             </Html>
         )
