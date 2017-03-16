@@ -57,7 +57,7 @@ class Dashboard extends React.Component {
     }
 
     shouldRenderDrawerHeader = () => {
-    	if (this.props.isMobile()) {
+    	if (this.props.isMobile() || this.props.isTablet()) {
     		return (
 			    <DrawerHeader/>
 		    );
@@ -71,7 +71,7 @@ class Dashboard extends React.Component {
             marginTop: this.props.isMobile() ? '0px' : '20px',
             marginBottom: this.props.isMobile() ? '0px' : '20px',
             marginRight: this.props.isMobile() ? '0px' : '20px',
-            marginLeft:  this.props.isMobile() ? '0' : this.state.open && this.props.width > 992 ? '280px' : '20px',
+            marginLeft:  this.props.isMobile() || this.props.isTablet() ? '0' : this.state.open && this.props.width > 992 ? '280px' : '20px',
             height: this.props.isMobile() ? 'calc(100vh - 64px)' : 'calc(100vh - 104px)',
         },
         cardContainer: {

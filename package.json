@@ -1,10 +1,10 @@
 {
-  "author": "Jonatan Salas",
-  "name": "universal-react-redux-atomic-boilerplate",
+  "author": "BlackBox Vision",
+  "name": "react-redux-starter-kit",
   "description": "Universal boilerplate with React/Redux under Atomic Design approach",
   "version": "1.0.1",
   "repository": {
-    "url": "https://github.com/BlackBoxVision/blackbox-vision.io.git",
+    "url": "https://github.com/BlackBoxVision/react-redux-starter-kit.git",
     "type": "git"
   },
   "license": "MIT",
@@ -18,35 +18,31 @@
     "clean": "rimraf dist",
     "webpack-app:dev": "better-npm-run webpack-app:dev",
     "webpack-app:prod": "better-npm-run webpack-app:prod",
-    "webpack-server:prod": "better-npm-run webpack-server:prod",
     "build:dev": "better-npm-run build:dev",
     "build:prod": "better-npm-run build:prod",
-    "start": "npm run build:prod",
-    "start:dev": "npm run build:dev"
+    "start": "yarn run build:prod",
+    "start:dev": "yarn run build:dev"
   },
   "betterScripts": {
     "build:dev": {
-      "command": "npm run clean && npm install && npm run webpack-app:dev && node index.js",
+      "command": "yarn run clean && yarn install && yarn run webpack-app:dev && node index.js",
       "env": {
         "BABEL_DISABLE_CACHE": "1",
         "NODE_ENV": "development"
       }
     },
     "build:prod": {
-      "command": "npm run clean && npm install && npm run webpack-app:prod && npm run webpack-server:prod && node index.js",
+      "command": "yarn run clean && yarn install && yarn run webpack-app:prod && node index.js",
       "env": {
         "BABEL_DISABLE_CACHE": "1",
         "NODE_ENV": "production"
       }
     },
     "webpack-app:dev": {
-      "command": "webpack --config webpack.config.dev.js"
+      "command": "parallel-webpack --config webpack.config.dev.js"
     },
     "webpack-app:prod": {
-      "command": "webpack --config webpack.config.prod.js"
-    },
-    "webpack-server:prod": {
-      "command": "webpack --config webpack.config.server.js"
+      "command": "parallel-webpack --config webpack.config.js"
     }
   },
   "dependencies": {
