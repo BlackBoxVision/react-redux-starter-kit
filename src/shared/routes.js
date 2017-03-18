@@ -2,13 +2,14 @@ import React from 'react';
 import Route from 'react-router/lib/Route';
 import IndexRedirect from 'react-router/lib/IndexRedirect';
 
-import Profile from './components/profile/Profile';
-import Dashboard from './components/dashboard/Dashboard';
-import Login from './components/login/Login';
 import Layout from './components/common/container/Layout';
+import Login from './components/login/LoginContainer';
+import Register from './components/register/RegisterContainer';
+import ResetPassword from './components/resetPassword/ResetPasswordContainer';
+import Dashboard from './components/dashboard/DashboardContainer';
+
+import Profile from './components/profile/Profile';
 import NotFound from './components/notFound/NotFound';
-import Register from './components/register/Register';
-import ResetPassword from './components/resetPassword/ResetPassword';
 import Settings from './components/settings/Settings';
 
 

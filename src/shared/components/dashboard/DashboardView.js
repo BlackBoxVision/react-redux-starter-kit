@@ -4,18 +4,22 @@ import Drawer from 'material-ui/Drawer/Drawer';
 import Card from 'material-ui/Card/Card';
 import List from 'material-ui/List/List';
 import ListItem from 'material-ui/List/ListItem';
-import withRouter from 'react-router/lib/withRouter';
 
 import DashboardContainer from '../common/container/Container';
-import withResize from '../common/hocs/withResize';
 
 import DrawerHeader from './DrawerHeader';
 import AppBarMenu from './AppBarMenu';
 
 
-class Dashboard extends React.Component {
+class DashboardView extends React.Component {
     static propTypes = {
-        children: PropTypes.any
+        children: PropTypes.any.isRequired,
+	    width: PropTypes.number.isRequired,
+	    height: PropTypes.number.isRequired,
+	    isMobile: PropTypes.func.isRequired,
+	    isTablet: PropTypes.func.isRequired,
+	    isDesktop: PropTypes.func.isRequired,
+	    router: PropTypes.object.isRequired
     };
 
     state = {
@@ -95,4 +99,4 @@ class Dashboard extends React.Component {
 	};
 }
 
-export default withRouter(withResize(Dashboard));
+export default DashboardView;

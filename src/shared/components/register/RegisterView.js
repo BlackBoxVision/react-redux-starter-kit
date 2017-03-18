@@ -1,14 +1,12 @@
 import React, {PropTypes} from 'react';
-import withRouter from 'react-router/lib/withRouter';
 
 import RegisterForm from './RegisterForm';
 import RegisterFormMobile from './RegisterFormMobile';
 
 import FlexContainer from '../common/container/FlexContainer';
-import withResize from '../common/hocs/withResize';
 
 
-class Register extends React.Component {
+class RegisterView extends React.Component {
     render() {
 	    const styles = this.getStyles();
 
@@ -40,4 +38,4 @@ class Register extends React.Component {
 	handleLogin = event => this.props.router.push('/login');
 }
 
-export default withRouter(withResize(Register));
+export default RegisterView;

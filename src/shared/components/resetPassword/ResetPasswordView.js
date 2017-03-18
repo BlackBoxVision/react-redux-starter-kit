@@ -1,14 +1,12 @@
 import React, {PropTypes} from 'react';
-import withRouter from 'react-router/lib/withRouter';
 
 import ResetPasswordForm from './ResetPasswordForm';
 import ResetPasswordFormMobile from './ResetPasswordFormMobile';
 
 import FlexContainer from '../common/container/FlexContainer';
-import withResize from '../common/hocs/withResize';
 
 
-class ResetPassword extends React.Component {
+class ResetPasswordView extends React.Component {
 
     render() {
         const styles = this.getStyles();
@@ -41,4 +39,4 @@ class ResetPassword extends React.Component {
 	handleLogin = event => this.props.router.push('/login');
 }
 
-export default withRouter(withResize(ResetPassword));
+export default ResetPasswordView;
