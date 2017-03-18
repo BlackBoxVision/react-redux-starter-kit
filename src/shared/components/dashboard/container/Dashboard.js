@@ -1,13 +1,13 @@
 import React, {PropTypes} from 'react';
-import LoginView from './LoginView';
+import DashboardView from '../view/Dashboard';
 
 import withRouter from 'react-router/lib/withRouter';
-import withResize from '../common/hocs/withResize';
+import withResize from '../../common/hocs/withResize';
 
 
 @withRouter
 @withResize
-class LoginContainer extends React.Component {
+class DashboardContainer extends React.Component {
 	static propTypes = {
 		width: PropTypes.number.isRequired,
 		height: PropTypes.number.isRequired,
@@ -19,16 +19,18 @@ class LoginContainer extends React.Component {
 
 	render() {
 		return (
-			<LoginView
+			<DashboardView
 				width={this.props.width}
 				height={this.props.height}
 				isMobile={this.props.isMobile}
-				isTablet={this.props.isTablet}
-				isDesktop={this.props.isDesktop}
-				router={this.props.router}
-			/>
+			    isTablet={this.props.isTablet}
+			    isDesktop={this.props.isDesktop}
+			    router={this.props.router}
+			>
+				{this.props.children}
+			</DashboardView>
 		)
 	}
 }
 
-export default LoginContainer;
+export default DashboardContainer;

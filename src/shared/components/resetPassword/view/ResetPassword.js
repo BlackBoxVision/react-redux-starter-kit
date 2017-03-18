@@ -3,7 +3,7 @@ import React, {PropTypes} from 'react';
 import ResetPasswordForm from './ResetPasswordForm';
 import ResetPasswordFormMobile from './ResetPasswordFormMobile';
 
-import FlexContainer from '../common/container/FlexContainer';
+import FlexContainer from '../../common/container/FlexContainer';
 
 
 class ResetPasswordView extends React.Component {

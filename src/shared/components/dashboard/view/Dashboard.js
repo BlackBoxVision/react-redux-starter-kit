@@ -5,7 +5,7 @@ import Card from 'material-ui/Card/Card';
 import List from 'material-ui/List/List';
 import ListItem from 'material-ui/List/ListItem';
 
-import DashboardContainer from '../common/container/Container';
+import DashboardContainer from '../../common/container/Container';
 
 import DrawerHeader from './DrawerHeader';
 import AppBarMenu from './AppBarMenu';

@@ -3,7 +3,7 @@ import React, {PropTypes} from 'react';
 import RegisterForm from './RegisterForm';
 import RegisterFormMobile from './RegisterFormMobile';
 
-import FlexContainer from '../common/container/FlexContainer';
+import FlexContainer from '../../common/container/FlexContainer';
 
 
 class RegisterView extends React.Component {

@@ -3,7 +3,7 @@ import React, {PropTypes} from 'react';
 import LoginForm from './LoginForm';
 import LoginFormMobile from './LoginFormMobile';
 
-import FlexContainer from '../common/container/FlexContainer';
+import FlexContainer from '../../common/container/FlexContainer';
 
 
 class LoginView extends React.Component {

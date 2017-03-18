@@ -5,7 +5,7 @@ import TextField from 'material-ui/TextField/TextField';
 import RaisedButton from 'material-ui/RaisedButton/RaisedButton';
 import FlatButton from 'material-ui/FlatButton/FlatButton';
 
-import Form from '../common/html/Form';
+import Form from '../../common/html/Form';
 
 
 class RegisterForm extends React.Component {

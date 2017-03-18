@@ -1,13 +1,13 @@
 import React, {PropTypes} from 'react';
-import RegisterView from './RegisterView';
+import LoginView from '../view/Login';
 
 import withRouter from 'react-router/lib/withRouter';
-import withResize from '../common/hocs/withResize';
+import withResize from '../../common/hocs/withResize';
 
 
 @withRouter
 @withResize
-class RegisterContainer extends React.Component {
+class LoginContainer extends React.Component {
 	static propTypes = {
 		width: PropTypes.number.isRequired,
 		height: PropTypes.number.isRequired,
@@ -19,7 +19,7 @@ class RegisterContainer extends React.Component {
 
 	render() {
 		return (
-			<RegisterView
+			<LoginView
 				width={this.props.width}
 				height={this.props.height}
 				isMobile={this.props.isMobile}
@@ -31,4 +31,4 @@ class RegisterContainer extends React.Component {
 	}
 }
 
-export default RegisterContainer;
+export default LoginContainer;

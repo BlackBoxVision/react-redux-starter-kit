@@ -1,13 +1,13 @@
 import React, {PropTypes} from 'react';
-import ResetPasswordView from './ResetPasswordView';
+import RegisterView from '../view/Register';
 
 import withRouter from 'react-router/lib/withRouter';
-import withResize from '../common/hocs/withResize';
+import withResize from '../../common/hocs/withResize';
 
 
 @withRouter
 @withResize
-class ResetPasswordContainer extends React.Component {
+class RegisterContainer extends React.Component {
 	static propTypes = {
 		width: PropTypes.number.isRequired,
 		height: PropTypes.number.isRequired,
@@ -19,7 +19,7 @@ class ResetPasswordContainer extends React.Component {
 
 	render() {
 		return (
-			<ResetPasswordView
+			<RegisterView
 				width={this.props.width}
 				height={this.props.height}
 				isMobile={this.props.isMobile}
@@ -31,4 +31,4 @@ class ResetPasswordContainer extends React.Component {
 	}
 }
 
-export default ResetPasswordContainer;
+export default RegisterContainer;

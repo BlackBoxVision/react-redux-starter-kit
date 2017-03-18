@@ -1,13 +1,13 @@
 import React, {PropTypes} from 'react';
-import DashboardView from './DashboardView';
+import ResetPasswordView from '../view/ResetPassword';
 
 import withRouter from 'react-router/lib/withRouter';
-import withResize from '../common/hocs/withResize';
+import withResize from '../../common/hocs/withResize';
 
 
 @withRouter
 @withResize
-class DashboardContainer extends React.Component {
+class ResetPasswordContainer extends React.Component {
 	static propTypes = {
 		width: PropTypes.number.isRequired,
 		height: PropTypes.number.isRequired,
@@ -19,18 +19,16 @@ class DashboardContainer extends React.Component {
 
 	render() {
 		return (
-			<DashboardView
+			<ResetPasswordView
 				width={this.props.width}
 				height={this.props.height}
 				isMobile={this.props.isMobile}
-			    isTablet={this.props.isTablet}
-			    isDesktop={this.props.isDesktop}
-			    router={this.props.router}
-			>
-				{this.props.children}
-			</DashboardView>
+				isTablet={this.props.isTablet}
+				isDesktop={this.props.isDesktop}
+				router={this.props.router}
+			/>
 		)
 	}
 }
 
-export default DashboardContainer;
+export default ResetPasswordContainer;
