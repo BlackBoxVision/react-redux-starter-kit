@@ -1,12 +1,11 @@
+const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
 	devtool: 'cheap-module-source-map',
     cache: true,
     entry: {
-        app: [
-            './src/client/index.js',
-        ],
+        app: path.join(__dirname, "src/client", "index.js"),
         vendor: [
             'react',
             'react-dom',
@@ -19,10 +18,8 @@ module.exports = {
     },
     resolve: {
         extensions: ['', '.js', '.jsx'],
-        modules: [
-            'client',
-            'node_modules'
-        ],
+        root: path.resolve(__dirname, 'client'),
+        modules: ['node_modules']
     },
     module: {
         loaders: [
@@ -30,6 +27,9 @@ module.exports = {
                 test: /\.js*$/,
                 exclude: /node_modules/,
                 loader: 'babel',
+                query: {
+                    cacheDirectory: true
+                }
             },
             {
                 test: /\.json$/,

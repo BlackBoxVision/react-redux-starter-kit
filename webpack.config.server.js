@@ -4,28 +4,22 @@ const ExternalsPlugin = require('webpack-externals-plugin');
 const webpack = require('webpack');
 
 module.exports = {
-    entry: path.resolve(__dirname, 'src/server/server.js'),
-
+    entry: path.join(__dirname, "src/server", "server.js"),
+	target: 'node',
+    cache: true,
     output: {
         path: __dirname + '/dist/',
         filename: 'server.bundle.js',
     },
-
-    target: 'node',
-
     node: {
         __filename: true,
         __dirname: true,
     },
-
     resolve: {
         extensions: ['', '.js', '.jsx'],
-        modules: [
-            'client',
-            'node_modules',
-        ]
+        root: path.resolve(__dirname, 'server'),
+        modules: ['node_modules']
     },
-
     module: {
         loaders: [
             {
@@ -33,6 +27,7 @@ module.exports = {
                 exclude: /node_modules/,
                 loader: 'babel-loader',
                 query: {
+                    cacheDirectory: true,
                     presets: [
                         'react',
                         'es2015',
