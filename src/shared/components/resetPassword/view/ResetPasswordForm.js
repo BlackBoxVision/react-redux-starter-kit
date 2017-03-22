@@ -8,21 +8,23 @@ import FlatButton from 'material-ui/FlatButton/FlatButton';
 import Form from '../../common/html/Form';
 
 
-class RegisterForm extends React.Component {
+class ResetPasswordForm extends React.Component {
 	static propTypes = {
 	    isMobile: PropTypes.func.isRequired,
 		handleLogin: PropTypes.func.isRequired
 	};
 
 	render() {
+	    const ResetPassword = this.getForm();
+
         if (this.props.isMobile()) {
-            return this.getForm();
+            return <ResetPassword/>;
         }
 
 		return (
 			<Card>
 				<CardText>
-                    {this.getForm()}
+                    <ResetPassword/>
 				</CardText>
 			</Card>
 		)
@@ -39,4 +41,4 @@ class RegisterForm extends React.Component {
     );
 }
 
-export default RegisterForm;
+export default ResetPasswordForm;

@@ -17,14 +17,16 @@ class LoginForm extends React.Component {
 	};
 
 	render() {
+	    const Login = this.getForm();
+
         if (this.props.isMobile()) {
-            return this.getForm();
+            return <Login/>;
         }
 
 		return (
 			<Card>
 				<CardText>
-                    {this.getForm()}
+                    <Login/>
 				</CardText>
 			</Card>
 		);
