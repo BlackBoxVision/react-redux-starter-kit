@@ -35,7 +35,7 @@ class App extends React.Component {
     };
 
     render() {
-        const { theme, store, ...routerProps  } = this.props;
+        const { theme, store, ...routerProps } = this.props;
 
         return (
             <MuiThemeProvider muiTheme={getMuiTheme(theme)}>

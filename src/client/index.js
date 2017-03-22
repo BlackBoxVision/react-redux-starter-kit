@@ -5,7 +5,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import theme from '../shared/theme';
 
-import getRoutes from '../shared/routes.js';
+import getRoutes from '../shared/routes';
 import App from '../shared/App';
 
 
