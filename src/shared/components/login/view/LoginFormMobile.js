@@ -11,7 +11,7 @@ class LoginFormMobile extends React.Component {
 		handleSubmit: PropTypes.func.isRequired,
 		handleRegister: PropTypes.func.isRequired,
 		handlePasswordForget: PropTypes.func.isRequired
-	}
+	};
 
 	render() {
 		const { handleSubmit, handleRegister, handlePasswordForget } = this.props;

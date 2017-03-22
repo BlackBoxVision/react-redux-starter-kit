@@ -7,11 +7,11 @@ export default function withResize(ReactComponent) {
 		state = {
 			width: 0,
 			height: 0
-		}
+		};
 
 		componentDidMount() {
 			this.handleResize();
-			window.addEventListener('resize', this.handleResize)
+			window.addEventListener('resize', this.handleResize);
 		}
 
 		render() {

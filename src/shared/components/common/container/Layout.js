@@ -5,7 +5,7 @@ import Container from './Container';
 class Layout extends React.Component {
     static propTypes = {
         children: PropTypes.any.isRequired
-    }
+    };
 
     render() {
         return (

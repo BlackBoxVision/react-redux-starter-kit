@@ -36,7 +36,7 @@ class AppBarMenu extends React.Component {
 				leftIcon: <Logout color="#757575"/>
 			}
 		]
-	}
+	};
 
 	render() {
 		return (
@@ -58,7 +58,7 @@ class AppBarMenu extends React.Component {
 				{...menuItem}
 			/>
 		)
-	}
+	};
 
 	onItemTouch = (event, child) => this.props.router.push(child.props.value);
 
@@ -80,7 +80,7 @@ class AppBarMenu extends React.Component {
 				{content}
 			</IconButton>
 		)
-	}
+	};
 
 	getStyles = () => ({
 		image: {

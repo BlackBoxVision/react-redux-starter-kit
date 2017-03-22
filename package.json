@@ -32,7 +32,7 @@
       }
     },
     "build:prod": {
-      "command": "yarn run clean && yarn install && yarn run webpack-app:prod && node index.js",
+      "command": "yarn run clean && yarn run webpack-app:prod && node index.js",
       "env": {
         "BABEL_DISABLE_CACHE": "1",
         "NODE_ENV": "production"

@@ -14,7 +14,7 @@ class IndexHtml extends Component {
 	    links: PropTypes.array,
         title: PropTypes.string,
         icon: PropTypes.string
-    }
+    };
 
     static defaultProps = {
     	title: 'Awesome App',
@@ -47,7 +47,7 @@ class IndexHtml extends Component {
 			    rel: 'stylesheet'
 		    }
 	    ]
-    }
+    };
 
     render() {
         const { content, state, styles, title, baseUrl, metadata, links } = this.props;

@@ -23,7 +23,7 @@ class DashboardView extends React.Component {
     };
 
     state = {
-        open: this.props.isMobile() ? false : true
+        open: !this.props.isMobile()
     };
 
     render() {
@@ -40,7 +40,7 @@ class DashboardView extends React.Component {
                     open={this.state.open}
 	                containerStyle={styles.drawer}
 	                onRequestChange={this.handleMenuDrawer}
-                    docked={this.props.isMobile() || this.props.isTablet() ? false : true}
+                    docked={!(this.props.isMobile() || this.props.isTablet())}
                 >
 	                {this.shouldRenderDrawerHeader()}
                     <List>
@@ -58,7 +58,7 @@ class DashboardView extends React.Component {
     	return (
     		<AppBarMenu isMobile={this.props.isMobile()} isTablet={this.props.isTablet()}/>
 	    );
-    }
+    };
 
     shouldRenderDrawerHeader = () => {
     	if (this.props.isMobile() || this.props.isTablet()) {
@@ -68,7 +68,7 @@ class DashboardView extends React.Component {
 	    }
 
 	    return false;
-    }
+    };
 
     getStyles = () => ({
         card: {

@@ -15,7 +15,7 @@ class DashboardContainer extends React.Component {
 		isTablet: PropTypes.func.isRequired,
 		isDesktop: PropTypes.func.isRequired,
 		router: PropTypes.object.isRequired
-	}
+	};
 
 	render() {
 		return (

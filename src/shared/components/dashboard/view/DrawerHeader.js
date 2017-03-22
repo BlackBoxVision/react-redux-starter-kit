@@ -40,7 +40,7 @@ class DrawerHeader extends React.Component {
 		}
 
 		return <AccountCircle color="white" style={styles.headerImage}/>;
-	}
+	};
 
 	getStyles = () => {
 		return {
