@@ -1,4 +1,5 @@
 const path = require('path');
+const BabiliWebpackPlugin = require('babili-webpack-plugin');
 const webpack = require('webpack');
 
 module.exports = {
@@ -8,7 +9,7 @@ module.exports = {
         app: path.join(__dirname, "src/client", "index.js"),
         vendor: [
             'react',
-            'react-dom',
+            'react-dom'
         ]
     },
     output: {
@@ -17,18 +18,28 @@ module.exports = {
         publicPath: '/',
     },
     resolve: {
-        extensions: ['', '.js', '.jsx'],
-        root: path.resolve(__dirname, 'client'),
-        modules: ['node_modules']
+        extensions: ['.js', '.jsx'],
+        root: path.resolve(__dirname, 'client')
     },
     module: {
         loaders: [
             {
                 test: /\.js*$/,
                 exclude: /node_modules/,
-                loader: 'babel',
+                loader: 'babel-loader',
+                include: __dirname,
                 query: {
                     cacheDirectory: true
+                },
+                options: {
+                    presets: [
+                        [
+                            'es2015',
+                            {
+                                modules: false
+                            }
+                        ]
+                    ]
                 }
             },
             {
@@ -52,21 +63,11 @@ module.exports = {
 		    filename: 'vendor.js',
 	    }),
         new webpack.optimize.DedupePlugin(),
-        new webpack.optimize.UglifyJsPlugin({
-            minimize: true,
-            mangle: true,
-            compress: {
-                warnings: false, // Suppress uglification warnings
-                pure_getters: true,
-                unsafe: true,
-                unsafe_comps: true,
-                screw_ie8: true
-            },
-            output: {
-                comments: false,
-            },
-            exclude: [/\.min\.js$/gi]
-        }),
-        new webpack.optimize.AggressiveMergingPlugin()
+        new webpack.optimize.AggressiveMergingPlugin(),
+        new webpack.IgnorePlugin(/^\.\/locale$/, [/moment$/]),
+        new webpack.NoErrorsPlugin(),
+        new BabiliWebpackPlugin({
+            comments: false
+        })
     ],
 };

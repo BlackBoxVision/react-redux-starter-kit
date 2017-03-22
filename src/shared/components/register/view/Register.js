@@ -1,7 +1,6 @@
 import React, {PropTypes} from 'react';
 
 import RegisterForm from './RegisterForm';
-import RegisterFormMobile from './RegisterFormMobile';
 
 import FlexContainer from '../../common/container/FlexContainer';
 
@@ -21,22 +20,13 @@ class RegisterView extends React.Component {
 
 	    return (
             <FlexContainer style={styles.container}>
-                {this.getRegisterForm()}
+                <RegisterForm
+                    isMobile={this.props.isMobile}
+                    handleLogin={this.handleLogin}
+                />
             </FlexContainer>
         );
     }
-
-    getRegisterForm = () => {
-        if (this.props.isMobile()) {
-            return (
-                <RegisterFormMobile handleLogin={this.handleLogin}/>
-            );
-        } else {
-            return (
-                <RegisterForm handleLogin={this.handleLogin}/>
-            );
-        }
-    };
 
 	getStyles = () => ({
         container: {

@@ -10,30 +10,37 @@ import Form from '../../common/html/Form';
 
 class LoginForm extends React.Component {
 	static propTypes = {
+	    isMobile: PropTypes.func.isRequired,
 		handleSubmit: PropTypes.func.isRequired,
 		handleRegister: PropTypes.func.isRequired,
 		handlePasswordForget: PropTypes.func.isRequired
 	};
 
 	render() {
-		const { handleSubmit, handleRegister, handlePasswordForget } = this.props;
+        if (this.props.isMobile()) {
+            return this.getForm();
+        }
 
 		return (
 			<Card>
 				<CardText>
-					<Form method="POST" onSubmit={handleSubmit}>
-						<TextField floatingLabelText='Username' hintText='Username' fullWidth/>
-						<TextField floatingLabelText='Password' hintText='Password' fullWidth/>
-						<div>
-							<FlatButton label='Register' onClick={handleRegister} primary/>
-							<FlatButton label='Forgot password?' onClick={handlePasswordForget} primary/>
-							<RaisedButton label='Login' type='submit' primary/>
-						</div>
-					</Form>
+                    {this.getForm()}
 				</CardText>
 			</Card>
 		);
 	}
+
+	getForm = () => (
+        <Form method="POST" onSubmit={this.props.handleSubmit}>
+            <TextField floatingLabelText='Username' hintText='Username' fullWidth/>
+            <TextField floatingLabelText='Password' hintText='Password' fullWidth/>
+            <div>
+                <FlatButton label='Register' onClick={this.props.handleRegister} primary/>
+                <FlatButton label='Forgot password?' onClick={this.props.handlePasswordForget} primary/>
+                <RaisedButton label='Login' type='submit' primary/>
+            </div>
+        </Form>
+    );
 }
 
 export default LoginForm;

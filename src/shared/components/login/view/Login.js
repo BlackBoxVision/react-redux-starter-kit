@@ -1,7 +1,6 @@
 import React, {PropTypes} from 'react';
 
 import LoginForm from './LoginForm';
-import LoginFormMobile from './LoginFormMobile';
 
 import FlexContainer from '../../common/container/FlexContainer';
 
@@ -21,30 +20,15 @@ class LoginView extends React.Component {
 
         return (
 	        <FlexContainer style={styles.container}>
-		        {this.getLoginForm()}
+                <LoginForm
+                    isMobile={this.props.isMobile}
+                    handleSubmit={this.handleSubmit}
+                    handleRegister={this.handleRegister}
+                    handlePasswordForget={this.handlePasswordForget}
+                />
 	        </FlexContainer>
         );
     }
-
-    getLoginForm = () => {
-        if (this.props.isMobile()) {
-            return (
-                <LoginFormMobile
-                    handleSubmit={this.handleSubmit}
-                    handleRegister={this.handleRegister}
-                    handlePasswordForget={this.handlePasswordForget}
-                />
-            )
-        } else {
-	        return (
-                <LoginForm
-                    handleSubmit={this.handleSubmit}
-                    handleRegister={this.handleRegister}
-                    handlePasswordForget={this.handlePasswordForget}
-                />
-	        )
-        }
-    };
 
     getStyles = () => ({
         container: {
