@@ -20,13 +20,13 @@ class LoginForm extends React.Component {
 	    const Login = this.getForm();
 
         if (this.props.isMobile()) {
-            return <Login/>;
+            return Login;
         }
 
 		return (
 			<Card>
 				<CardText>
-                    <Login/>
+                    {Login}
 				</CardText>
 			</Card>
 		);

@@ -18,13 +18,13 @@ class ResetPasswordForm extends React.Component {
 	    const ResetPassword = this.getForm();
 
         if (this.props.isMobile()) {
-            return <ResetPassword/>;
+            return ResetPassword;
         }
 
 		return (
 			<Card>
 				<CardText>
-                    <ResetPassword/>
+                    {ResetPassword}
 				</CardText>
 			</Card>
 		)

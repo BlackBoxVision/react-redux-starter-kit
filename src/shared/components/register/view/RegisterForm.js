@@ -18,13 +18,13 @@ class RegisterForm extends React.Component {
 	    const Register = this.getForm();
 
 	    if (this.props.isMobile()) {
-	        return <Register/>;
+            return Register;
         }
 
 		return (
 			<Card>
 				<CardText>
-                    <Register/>
+                    {Register}
 				</CardText>
 			</Card>
 		);
