@@ -89,7 +89,7 @@
     "better-npm-run": "^0.0.14",
     "chunk-manifest-webpack-plugin": "^1.0.0",
     "css-loader": "^0.26.0",
-    "extract-text-webpack-plugin": "^1.0.1",
+    "extract-text-webpack-plugin": "^2.1.2",
     "file-loader": "^0.9.0",
     "js-polyfills": "^0.1.27",
     "json-loader": "^0.5.4",
