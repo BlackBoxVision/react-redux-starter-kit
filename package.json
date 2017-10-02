@@ -62,7 +62,7 @@
     "redux-form": "^6.5.0",
     "redux-thunk": "^2.0.1",
     "styled-components": "^1.4.4",
-    "winston": "^2.2.0"
+    "winston": "^2.4.0"
   },
   "devDependencies": {
     "babel-cli": "^6.11.4",
